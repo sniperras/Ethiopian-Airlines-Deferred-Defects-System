@@ -1,9 +1,9 @@
 <?php
 // db_connect.php - CHANGE ONLY THESE 4 LINES WITH YOUR HOSTING DETAILS
-$host     = 'sql100.infinityfree.com';
-$dbname   = 'if0_40564648_et_deferred_defects';     // ← CHANGE TO YOUR DATABASE NAME
-$username = 'if0_40564648';        // ← YOUR DB USERNAME
-$password = 'a7kjNsy8mU';    // ← YOUR DB PASSWORD (from hosting panel)
+$host     = 'localhost';
+$dbname   = 'et_add_follow_up';     // ← CHANGE TO YOUR DATABASE NAME
+$username = 'root';        // ← YOUR DB USERNAME
+$password = '';    // ← YOUR DB PASSWORD (from hosting panel)
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
