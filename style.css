@@ -1,0 +1,226 @@
+/* style.css - Ethiopian Airlines Deferred Defects System (2025+) */
+/* Uses Tailwind CSS + Custom Enhancements */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────
+   CUSTOM THEME – NEW COLOR PALETTE (SOLID BACKGROUND, FORMAL)
+   ────────────────────────────── */
+:root {
+    --ink-black: #0d1b2a;
+    --prussian-blue: #1b263b;
+    --dusk-blue: #415a77;
+    --lavender-grey: #778da9;
+    --alabaster-grey: #e0e1dd;
+
+    /* Semantic color assignments */
+    --primary: var(--prussian-blue);
+    --primary-light: var(--dusk-blue);
+    --primary-dark: var(--ink-black);
+    --accent: var(--lavender-grey);
+    --background-light: var(--alabaster-grey);
+
+    /* Status colors */
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+}
+
+/* --------------------------
+   PAGE BACKGROUND (SOLID)
+   -------------------------- */
+body {
+    @apply min-h-screen text-white font-sans;
+    background-color: var(--ink-black); /* solid background — NO gradient */
+    color: var(--dusk-blue);            /* primary readable text color */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+/* Utility semantic classes used by PHP */
+/* readable primary text */
+.text-primary {
+    color: var(--dusk-blue) !important;
+}
+
+/* darker title color */
+.text-title {
+    color: var(--ink-black) !important;
+}
+
+/* muted accent text */
+.text-accent {
+    color: var(--lavender-grey) !important;
+}
+
+/* formal cards (no animation) */
+.formal-card {
+    background-color: rgba(255,255,255,0.03);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 0.75rem;
+}
+
+/* formal header area */
+.formal-header {
+    background-color: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* formal buttons */
+.formal-btn {
+    background-color: var(--prussian-blue);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.04);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* export button variant */
+.formal-btn--export {
+    background-color: #0f5132;
+}
+
+/* input selects */
+.formal-input {
+    background-color: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--dusk-blue);
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* table visual */
+.table-modern {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+/* table header */
+.table-modern thead tr {
+    background-color: var(--prussian-blue);
+}
+.table-modern thead th {
+    color: white;
+    text-align: left;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* table body cells */
+.table-modern tbody td {
+    padding: 0.65rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: var(--dusk-blue);
+    vertical-align: top;
+    font-size: 0.95rem;
+}
+
+/* small-screen readable description */
+.desc-compact {
+    max-width: 42ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* status badges (formal, accessible) */
+.badge-active {
+    background-color: rgba(16,185,129,0.12);
+    color: #065f46;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+.badge-cleared {
+    background-color: rgba(220,53,69,0.08);
+    color: #7f1d1d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+/* due indicators (subtle, non-animated) */
+.due-overdue {
+    color: var(--danger);
+    font-weight: 700;
+}
+.due-soon {
+    color: var(--warning);
+    font-weight: 700;
+}
+
+/* navbar formal */
+.navbar-et {
+    background-color: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* responsive helpers: full-display, container resizing */
+.container-full {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* ensure content fills viewport vertically */
+.main-full {
+    min-height: calc(100vh - 96px); /* account for navbar and footer */
+}
+
+/* TABLE responsiveness: keep horizontal scroll on small screens */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Mobile: stack rows into cards for easier reading (small screens) */
+@media (max-width: 800px) {
+    .table-modern {
+        min-width: 100%;
+        display: block;
+    }
+    .table-modern thead {
+        display: none;
+    }
+    .table-modern tbody tr {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+        padding: 0.6rem;
+        margin-bottom: 0.6rem;
+        border: 1px solid rgba(255,255,255,0.03);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.02);
+    }
+    .table-modern tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
+    .desc-compact { white-space: normal; overflow: visible; }
+}
+
+/* small typography adjustments for accessibility */
+h1, h2, h3 { line-height: 1.2; }
+p, td, th, input, select, button { line-height: 1.35; }
