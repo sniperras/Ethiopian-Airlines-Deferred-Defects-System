@@ -38,14 +38,33 @@ foreach ($tables as $fleetName => $table) {
     if ($regs) $fleetGroups[$fleetName] = $regs;
 }
 
-// === ACTIVE DEFECTS LIST (Personal - unchanged) ===
+// Assume these variables come from your authentication system
+// $username   = logged-in username
+// $user_role  = 'admin' or 'pilot' or whatever
+// $user_fleet = the fleet the user belongs to, e.g., "737fleet", "320fleet", "777fleet"
+
 if ($user_role === 'admin') {
-    $stmt = $pdo->query("SELECT * FROM deferred_defects WHERE status = 'active' ORDER BY deferral_date DESC LIMIT 50");
-} else {
-    $stmt = $pdo->prepare("SELECT * FROM deferred_defects WHERE deferred_by_name = ? AND status = 'active' ORDER BY deferral_date DESC");
-    $stmt->execute([$username]);
+    // Admin sees ALL active defects from ALL fleets
+    $sql  = "SELECT * FROM deferred_defects 
+             WHERE status = 'active' 
+             ORDER BY deferral_date DESC 
+             LIMIT 50";
+    $stmt = $pdo->query($sql);
 }
-$active_defects = $stmt->fetchAll();
+else {
+    // Non-admin users (pilots, engineers, etc.) see only their fleet's active defects
+    // We assume there's a column `fleet` in deferred_defects table (e.g., "737fleet")
+    $sql = "SELECT * FROM deferred_defects 
+            WHERE fleet = ? 
+              AND status = 'active' 
+            ORDER BY deferral_date DESC 
+            LIMIT 50";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$allowed_fleet]);   // $user_fleet comes from login credentials
+}
+
+$active_defects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // === STATISTICS - NOW FLEET-SPECIFIC FOR NON-ADMINS ===
 $today = date('Y-m-d');
@@ -95,7 +114,8 @@ if ($isGlobalView) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DefTrack | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -230,7 +250,8 @@ if ($isGlobalView) {
             <h2>DefTrack</h2>
         </div>
         <div class="nav-user">
-            <span><i class="fa fa-user" style="color: white"></i> <?= htmlspecialchars($username) ?>
+            <span><i class="fa-solid fa-user"></i>
+                <?= htmlspecialchars($username) ?>
                 <?php if ($user_role === 'admin'): ?> <small style="color:#a8e6cf;">(Admin)</small><?php endif; ?>
                 <?php if (!$isGlobalView && $allowed_fleet): ?> <small style="color:#f39c12;">(<?= $allowed_fleet ?> Fleet)</small><?php endif; ?>
             </span>
@@ -422,7 +443,7 @@ if ($isGlobalView) {
         <!-- FLEET-SPECIFIC STATS + PIE CHART -->
         <div class="stats-row">
             <div class="stats-left">
-                <h3 style="margin:0 0 20px; color:#1B3C53;">
+                <h3 style="margin:0 0 20px; color:#ffffff;">
                     Defect Statistics
                     <?php if (!$isGlobalView): ?>
                         <small class="fleet-note">— <?= htmlspecialchars($allowed_fleet) ?> Fleet Only</small>

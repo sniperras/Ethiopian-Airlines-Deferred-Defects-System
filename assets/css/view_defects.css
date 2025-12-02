@@ -356,6 +356,28 @@ body {
     font-size: 0.9rem;
 }
 
+/* Fix long description wrapping vertically */
+.desc-cell {
+    white-space: normal !important;
+    word-wrap: break-word;
+    max-width: 300px;
+    line-height: 1.5;
+    padding: 10px 8px;
+}
+
+/* Nice locked fleet indicator */
+.fleet-locked-info {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .filter-form {
