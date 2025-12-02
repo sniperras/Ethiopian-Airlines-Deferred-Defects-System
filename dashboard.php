@@ -112,125 +112,13 @@ if ($isGlobalView) {
             --soft: rgba(0, 0, 0, 0.06);
         }
 
-        html,
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            background: var(--bg);
-            margin: 0;
-            padding: 0;
-            color: #0f1724;
-        }
-
-        nav.top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 14px 24px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-            border-bottom: 4px solid var(--brand);
-        }
-
-        nav .nav-brand h2 {
-            margin: 0;
-            color: var(--brand);
-        }
-
-        nav .nav-user {
-            font-size: 0.95rem;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            color: #1B3C53;
-        }
-
-        .container-compact {
-            max-width: 1180px;
-            margin: 26px auto;
-            padding: 0 16px;
-        }
-
-        .card-compact {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            margin-bottom: 28px;
-        }
-
-        .card-title {
-            margin: 0 0 18px;
-            color: var(--brand);
-        }
 
         /* Form grid and small components */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            font-weight: 600;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="number"],
-        select,
-        textarea {
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1px solid #e3eef6;
-            background: #fcfeff;
-            font-size: 0.95rem;
-            box-shadow: none;
-        }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .radio-inline {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .radio-inline label {
-            font-weight: 600;
-            color: #314a5a;
-        }
 
         .text-center {
             text-align: center;
         }
 
-        .btn-submit-centered {
-            background: var(--brand);
-            color: #fff;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 8px 22px rgba(35, 76, 106, 0.12);
-        }
 
         /* Stats styling (re-used from original) */
         .stats-row {
@@ -305,52 +193,11 @@ if ($isGlobalView) {
             width: 100%;
         }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .table th,
-        .table td {
-            text-align: left;
-            padding: 10px 12px;
-            border-bottom: 1px solid #eef6fb;
-            font-size: 0.95rem;
-        }
-
         .table thead th {
             font-weight: 700;
             color: #2d4452;
         }
 
-        .actions-cell {
-            text-align: center;
-        }
-
-        .btn-clear,
-        .btn-edit {
-            text-decoration: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-
-        .btn-clear {
-            background: #08CB00;
-            color: #ffffff;
-            margin-right: 8px;
-        }
-
-        .btn-edit {
-            background: #d9edf7;
-            color: #135b73;
-        }
-
-        .no-data {
-            color: #5b7079;
-            padding: 14px;
-        }
 
         /* Responsive adjustments */
         @media (max-width: 980px) {
