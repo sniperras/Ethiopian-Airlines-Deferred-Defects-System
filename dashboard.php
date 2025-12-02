@@ -231,7 +231,7 @@ if ($isGlobalView) {
         </div>
         <div class="nav-user">
             <span><i class="fa fa-user"></i> <?= htmlspecialchars($username) ?>
-                <?php if ($user_role === 'admin'): ?> <small style="color:#1B3C53;">(Admin)</small><?php endif; ?>
+                <?php if ($user_role === 'admin'): ?> <small style="color:#a8e6cf;">(Admin)</small><?php endif; ?>
                 <?php if (!$isGlobalView && $allowed_fleet): ?> <small style="color:#f39c12;">(<?= $allowed_fleet ?> Fleet)</small><?php endif; ?>
             </span>
             <a href="view_all_defects.php" class="btn-view">View All Defects</a>
