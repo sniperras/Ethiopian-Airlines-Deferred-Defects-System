@@ -1,159 +1,255 @@
 /* ===================================================== */
-/*  assets/css/login.css                                 */
-/*  Ethiopian Airlines - EADDS Login Page Only           */
-/*  Compact | Centered | No Scroll | Fully Responsive    */
+/*  login-horizontal.css - SUPER COMPACT & BALANCED     */
+/*  Full stylesheet — paste into assets/css/login.css   */
 /* ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+:root{
+    --primary-1: #1B3C53;
+    --primary-2: #234C6A;
+    --muted: #456882;
+    --card-bg: #ffffff;
+    --shadow: rgba(0,0,0,0.22);
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+/* Page background & centering */
+body {
     font-family: 'Inter', sans-serif;
-}
-
-.login-master {
+    background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
     min-height: 100vh;
-    background: linear-gradient(135deg, #1B3C53 0%, #234C6A 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.login-box {
+/* MAIN CARD */
+.login-master {
     width: 100%;
-    max-width: 380px;
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 35px;
+    max-width: 650px;      /* card width */
+    height: 360px;         /* card height */
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 14px 40px var(--shadow);
+    display: flex;
+    align-items: stretch;  /* ensure both panels stretch full height */
+    margin: 18px;
+}
+
+/* INNER FLEX */
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* LEFT PANEL - Prominent */
+.logo-section {
+    flex: 0 0 40%;         /* left panel width (40% of card) */
+    max-width: 280px;
+    background: linear-gradient(145deg, var(--primary-2), var(--primary-1));
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(27, 60, 83, 0.45);
-    border-top: 6px solid #234C6A;
-    position: relative;
+    align-self: stretch;
 }
 
-.logo-mini {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 22px;
-    padding: 8px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 8px 25px rgba(27, 60, 83, 0.22);
+/* Logo sizing (keeps left visually strong) */
+.logo-wrapper {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo-mini img {
+.et-logo {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25));
 }
 
-.login-box h1 {
-    font-size: 2.6rem;
+/* Left text */
+.logo-text h1 {
+    font-size: 2.1rem;
     font-weight: 800;
-    color: #1B3C53;
-    margin: 0 0 6px 0;
-    letter-spacing: -1.5px;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
 }
 
-.login-box p {
-    color: #456882;
+.logo-text p {
+    font-size: 1rem;
+    opacity: 0.95;
+    line-height: 1.25;
     font-weight: 500;
-    margin-bottom: 32px;
-    font-size: 0.95rem;
 }
 
-.input-wrap {
+/* RIGHT PANEL - Balanced to left */
+.form-section {
+    flex: 1 1 60%;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;         /* increased padding to match left visual weight */
+    align-self: stretch;
+}
+
+/* Form container wider to balance left */
+.form-box {
+    width: 100%;
+    max-width: 300px;      /* increased from 240 to 300 */
+}
+
+/* Headings */
+.form-box h2 {
+    font-size: 1.7rem;     /* slightly larger for visual parity */
+    color: var(--primary-1);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-size: 1rem;       /* increased to balance left panel text */
+}
+
+/* Input groups */
+.input-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
-.input-wrap i {
+.input-group i {
     position: absolute;
-    left: 16px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #456882;
-    font-size: 1.1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
     z-index: 2;
 }
 
-.input-wrap input {
+.input-group input {
     width: 100%;
-    padding: 14px 14px 14px 48px;
-    border: 2px solid #E3E3E3;
-    border-radius: 10px;
-    font-size: 1rem;
-    background: #fff;
-    transition: all 0.3s ease;
+    padding: 14px 14px 14px 44px;  /* slightly larger padding */
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 1rem;       /* scaled up to match left text */
+    background: #fbfbfb;
+    transition: all 0.15s ease;
 }
 
-.input-wrap input:focus {
+.input-group input::placeholder { color: #9aa6ad; }
+
+.input-group input:focus {
     outline: none;
-    border-color: #234C6A;
-    box-shadow: 0 0 0 4px rgba(35, 76, 106, 0.15);
+    border-color: var(--primary-2);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(35,76,106,0.08);
 }
 
-.btn-login {
+/* Button — bold and balanced */
+.btn-signin {
     width: 100%;
     padding: 14px;
-    background: #234C6A;
+    background: var(--primary-2);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn-login:hover {
-    background: #1B3C53;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(27, 60, 83, 0.3);
-}
-
-.alert {
-    background: #ffe6e6;
-    color: #c33;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    display: flex;
+    margin-top: 12px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-signin:hover {
+    background: var(--primary-1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(27,60,83,0.18);
+}
+
+/* Alert */
+.alert {
+    background: #fff0f0;
+    color: #a00000;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
     border-left: 4px solid #c33;
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
-.tiny-footer {
-    margin-top: 30px;
-    font-size: 0.8rem;
+/* Footer small */
+.footer-text {
+    text-align: center;
+    margin-top: 14px;
     color: #888;
+    font-size: 0.88rem;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 400px) {
-    .login-box {
-        padding: 35px 25px;
-        max-width: 340px;
+/* Keep rounded corners on parent only */
+.login-master { border-radius: 16px; overflow: hidden; }
+
+/* RESPONSIVE: stack on smaller screens */
+@media (max-width: 780px) {
+    .login-master {
+        flex-direction: column;
+        height: auto;
+        max-width: 360px;
     }
-    .login-box h1 {
-        font-size: 2.3rem;
+
+    .login-container { flex-direction: column; height: auto; }
+
+    .logo-section {
+        width: 100%;
+        flex: none;
+        padding: 18px;
     }
+
+    .form-section {
+        padding: 18px;
+    }
+
+    .logo-wrapper { width: 120px; height: 120px; margin-bottom: 10px; }
+    .logo-text h1 { font-size: 1.4rem; }
+    .logo-text p { font-size: 0.9rem; }
+
+    .form-box { max-width: 100%; }
+    .form-box h2 { font-size: 1.25rem; }
+    .subtitle { font-size: 0.92rem; }
+    .input-group input { padding: 12px 12px 12px 42px; font-size: 0.95rem; }
+    .btn-signin { padding: 12px; font-size: 1rem; }
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+    .login-master { margin: 10px; border-radius: 12px; }
+    .logo-wrapper { width: 96px; height: 96px; }
+    .logo-text h1 { font-size: 1.15rem; }
+    .form-box h2 { font-size: 1.1rem; }
+    .subtitle { font-size: 0.85rem; }
+    .input-group input { padding-left: 40px; }
 }

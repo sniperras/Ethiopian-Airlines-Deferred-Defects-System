@@ -15,59 +15,67 @@ if (isset($_SESSION['user_id'])) {
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <!-- Dedicated Login Styles -->
-    <link rel="stylesheet" href="assets/css/login.css">
+    <!-- NEW HORIZONTAL CSS -->
+    <link rel="stylesheet" href="assets/css/login.css?v=3">
 </head>
 <body>
 
     <div class="login-master">
-        <div class="login-box" data-aos="fade-up">
+        <div class="login-container">
 
-            <div class="logo-mini">
-                <img src="img/logo.png" alt="Ethiopian Airlines">
+            <!-- LEFT: Logo Section -->
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="img/logo.png" alt="Ethiopian Airlines" class="et-logo">
+                </div>
+                <div class="logo-text">
+                    <h1>DefTrack</h1>
+                    <p>Acceptable Deferred Defect<br>Tracking System</p>
+                </div>
             </div>
 
-            <h1>DefTrack</h1>
-            <p>Acceptable Deferred Defect Track System</p>
+            <!-- RIGHT: Login Form -->
+            <div class="form-section">
+                <div class="form-box">
 
-            <form action="login_process.php" method="post">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Sign in to continue</p>
 
-                <?php if (isset($_SESSION['login_error'])): ?>
-                    <div class="alert">
-                        <i class="fa fa-exclamation-circle"></i>
-                        <?= htmlspecialchars($_SESSION['login_error']); unset($_SESSION['login_error']); ?>
-                    </div>
-                <?php endif; ?>
+                    <form action="login_process.php" method="post">
 
-                <div class="input-wrap">
-                    <i class="fa fa-user"></i>
-                    <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                        <?php if (isset($_SESSION['login_error'])): ?>
+                            <div class="alert">
+                                <i class="fa fa-exclamation-circle"></i>
+                                <?= htmlspecialchars($_SESSION['login_error']); unset($_SESSION['login_error']); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="input-group">
+                            <i class="fa fa-user"></i>
+                            <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                        </div>
+
+                        <div class="input-group">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                        </div>
+
+                        <button type="submit" class="btn-signin">
+                            <i class="fa fa-arrow-right-to-bracket"></i>
+                            SIGN IN
+                        </button>
+
+                        <div class="footer-text">
+                            © 2025 Ethiopian Airlines
+                        </div>
+                    </form>
                 </div>
-
-                <div class="input-wrap">
-                    <i class="fa fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
-                </div>
-
-                <button type="submit" class="btn-login">
-                    <i class="fa fa-arrow-right-to-bracket"></i> SIGN IN
-                </button>
-            </form>
-
-            <div class="tiny-footer">
-                © 2025 Ethiopian Airlines
             </div>
         </div>
     </div>
-
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-    </script>
 
 </body>
 </html>
