@@ -15,7 +15,7 @@ if ($user_role === 'admin' || $allowed_fleet === 'ALL') {
     $tables = [
         'Airbus' => 'airbus_fleet',
         '787'    => 'fleet_787',
-        '777'    => 'fleet_777',
+        '777'    => 'fleet_777',  
         '737'    => 'fleet_737',
         'Cargo'  => 'cargo_fleet',
         'Q400'   => 'q400_fleet'
