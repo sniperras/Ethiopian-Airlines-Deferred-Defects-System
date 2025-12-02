@@ -213,7 +213,7 @@ $defects = $stmt->fetchAll();
         </div>
 
         <div class="page-footer">
-            <p>© 2025 Ethiopian Airlines • Engineering Department • Deferred Defects System</p>
+            <p>© 2025 Ethiopian Airlines • DefTrack ADD Tracking System</p>
         </div>
     </div>
 

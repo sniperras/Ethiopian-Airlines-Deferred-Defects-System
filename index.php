@@ -69,7 +69,7 @@ if (isset($_SESSION['user_id'])) {
                         </button>
 
                         <div class="footer-text">
-                            © 2025 Ethiopian Airlines Engineering
+                            © 2025 Ethiopian Airlines
                         </div>
                     </form>
                 </div>
