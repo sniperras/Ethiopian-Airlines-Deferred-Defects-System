@@ -159,8 +159,10 @@ body {
 .card-compact {
     background: white;
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(27, 60, 83, 0.18);
+    padding: 28px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(27, 60, 83, 0.14);
+    border-top: 5px solid #234C6A;
 }
 
 /* Action Buttons */
@@ -256,6 +258,11 @@ body {
     font-weight: 600;
 }
 
+/* Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
 .defects-table {
     width: 100%;
     border-collapse: collapse;
@@ -265,7 +272,7 @@ body {
 .defects-table th {
     background: #234C6A;
     color: white;
-    padding: 16px 12px;
+    padding: 14px;
     text-align: left;
     font-weight: 600;
 }
@@ -354,6 +361,63 @@ body {
     margin-top: 50px;
     color: #aaa;
     font-size: 0.9rem;
+}
+
+/* Fix long description wrapping vertically */
+.desc-cell {
+    white-space: normal !important;
+    word-wrap: break-word;
+    max-width: 300px;
+    line-height: 1.5;
+    padding: 10px 8px;
+}
+
+/* Nice locked fleet indicator */
+.fleet-locked-info {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Remove horizontal scroll - table fits perfectly on screen */
+.no-horizontal-scroll {
+    overflow-x: hidden !important;
+}
+.no-horizontal-scroll table {
+    width: 100%;
+    table-layout: auto;
+}
+.no-horizontal-scroll .desc-cell {
+    max-width: 280px;
+    word-wrap: break-word;
+    white-space: normal !important;
+}
+
+/* Fit all columns in one screen - NO HORIZONTAL SCROLL */
+.fit-to-screen {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.fit-to-screen table {
+    font-size: 0.82rem;
+    min-width: 1400px;
+}
+.fit-to-screen th,
+.fit-to-screen td {
+    padding: 8px 6px !important;
+    white-space: nowrap;
+}
+.fit-to-screen .desc-cell {
+    white-space: normal !important;
+    min-width: 220px;
+    max-width: 260px;
+    word-wrap: break-word;
 }
 
 /* Responsive */
