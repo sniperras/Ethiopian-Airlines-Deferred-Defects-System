@@ -192,10 +192,10 @@ if ($isGlobalView) {
             </div>
         <?php endif; ?>
 
-        <!-- ADD DEFECT FORM — 100% UNCHANGED -->
+        <!-- ADD DEFECT FORM — ONLY MODIFIED AS REQUESTED -->
         <div class="card-compact">
             <h3 class="card-title">Add New Deferred Defect</h3>
-            <form action="add_defect.php" method="POST" class="defect-form">
+            <form action="add_defect.php" method="POST" class="defect-form" onsubmit="return validateForm()">
                 <?php
                 $today = date('Y-m-d');
                 $twoDaysAgo = date('Y-m-d', strtotime('-2 days'));
@@ -224,6 +224,10 @@ if ($isGlobalView) {
                     <div class="form-group">
                         <label>ADD Log No</label>
                         <input type="text" name="add_log_no" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Transferred from MNT Logbook</label>
+                        <input type="text" name="transferred_from_mnt_logbook" placeholder="e.g. MNT-2025-001">
                     </div>
                 </div>
 
@@ -258,7 +262,7 @@ if ($isGlobalView) {
                     <div class="form-group">
                         <label>Time Limit Source</label>
                         <select name="time_limit_source">
-                            <option>NONE</option><option>AMM</option><option>SRM</option><option>OTHER</option>
+                            < option>NONE</option><option>AMM</option><option>SRM</option><option>OTHER</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -283,7 +287,7 @@ if ($isGlobalView) {
 
                 <div class="form-group" style="max-width: 300px;">
                     <label>TSFN</label>
-                    <input type="text" name="tsfn" placeholder="e.g. TSFN-2025-1234" maxlength="20">
+                    <input type="text" name="tsfn" id="tsfn" placeholder="e.g. TSFN800xxxxx" maxlength="20">
                 </div>
 
                 <hr style="margin:20px 0; border-color:#E3E3E3;">
@@ -299,7 +303,7 @@ if ($isGlobalView) {
 
                 <div id="part_fields" class="reason-fields">
                     <div class="form-grid">
-                        <div class="form-group"><label>RID</label><input type="text" name="rid"></div>
+                        <div class="form-group"><label>RID</label><input type="text" name="rid" id="rid" placeholder="e.g. RSV0500xxxxx"></div>
                         <div class="form-group"><label>Part Number</label><input type="text" name="part_no"></div>
                         <div class="form-group"><label>Qty</label><input type="number" name="part_qty" min="1"></div>
                     </div>
@@ -325,7 +329,7 @@ if ($isGlobalView) {
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Deferred By</label>
-                        <input type="text" name="deferred_by_name" ?>
+                        <input type="text" name="deferred_by_name">
                     </div>
                     <div class="form-group">
                         <label>Your ID / Signature *</label>
@@ -426,8 +430,23 @@ if ($isGlobalView) {
 
     </div>
 
-    <!-- Chart.js Pie Chart - Now Fleet-Specific -->
+    <!-- Client-side validation for RID and TSFN -->
     <script>
+        function validateForm() {
+            const rid = document.getElementById('rid').value.trim();
+            const tsfn = document.getElementById('tsfn').value.trim();
+
+            if (rid && !rid.startsWith('RSV0500')) {
+                alert("RID must start with 'RSV0500'");
+                return false;
+            }
+            if (tsfn && !tsfn.toUpperCase().startsWith('TSFN800')) {
+                alert("TSFN must start with 'TSFN800'");
+                return false;
+            }
+            return true;
+        }
+
         const ctx = document.getElementById('defectPieChart').getContext('2d');
         const chart = new Chart(ctx, {
             type: 'pie',
@@ -457,7 +476,6 @@ if ($isGlobalView) {
             }
         });
 
-        // Existing scripts (unchanged)
         const fleetData = <?= json_encode($fleetGroups) ?>;
 
         function filterAircraft() {
