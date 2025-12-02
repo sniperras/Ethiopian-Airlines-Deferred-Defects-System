@@ -230,7 +230,7 @@ if ($isGlobalView) {
             <h2>DefTrack</h2>
         </div>
         <div class="nav-user">
-            <span><i class="fa fa-user"></i> <?= htmlspecialchars($username) ?>
+            <span><i class="fa fa-user" style="color: white"></i> <?= htmlspecialchars($username) ?>
                 <?php if ($user_role === 'admin'): ?> <small style="color:#a8e6cf;">(Admin)</small><?php endif; ?>
                 <?php if (!$isGlobalView && $allowed_fleet): ?> <small style="color:#f39c12;">(<?= $allowed_fleet ?> Fleet)</small><?php endif; ?>
             </span>
