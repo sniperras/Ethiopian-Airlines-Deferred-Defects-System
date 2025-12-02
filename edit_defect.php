@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="container-compact">
         <div class="card-compact" style="border-top:6px solid #234C6A;">
-            <h2 class="card-title">Edit Deferred Defect</h2>
+            <h2 class="card-title">Edit or View Deferred Defect</h2>
 
             <?php if (!empty($errors)): ?>
                 <div style="background:#ffe6e6; color:#c33; padding:15px; border-radius:10px; margin:20px 0; border-left:5px solid #c33;">

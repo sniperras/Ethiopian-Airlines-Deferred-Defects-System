@@ -19,7 +19,7 @@ $status_filter = $_GET['status'] ?? 'ALL';
 $fleet_filter  = $_GET['fleet']  ?? 'ALL';
 $search        = trim($_GET['search'] ?? '');
 
-// Force fleet filter for non-admin locked users (security + UX)
+// Force fleet filter for non-admin locked users
 if (!$is_admin && $is_fleet_locked && $user_fleet !== '') {
     $fleet_filter = $user_fleet;
 }
@@ -123,8 +123,7 @@ $defects = $stmt->fetchAll();
                         </select>
                     </div>
                 <?php else: ?>
-                    <!-- Hidden input + visual lock indicator for normal users -->
-                   <input type="hidden" name="fleet" value="<?= htmlspecialchars($user_fleet) ?>">
+                    <input type="hidden" name="fleet" value="<?= htmlspecialchars($user_fleet) ?>">
                     <div class="fleet-locked-info">
                         <i class="fa fa-lock"></i> Viewing: <strong><?= htmlspecialchars($user_fleet) ?: 'Restricted' ?> Fleet</strong>
                     </div>
@@ -141,7 +140,8 @@ $defects = $stmt->fetchAll();
 
         <div class="card-compact">
             <?php if ($defects): ?>
-            <div class="table-responsive">
+            <!-- ONLY CHANGE: Added fit-to-screen class -->
+            <div class="table-responsive fit-to-screen">
                 <table class="defects-table">
                     <thead>
                         <tr>
@@ -196,20 +196,18 @@ $defects = $stmt->fetchAll();
                             <td class="mono"><?= htmlspecialchars($d['tsfn'] ?? '-') ?></td>
                             <td class="mono"><?= htmlspecialchars($d['rid'] ?? '-') ?></td>
                             <td class="desc-cell">
-                                <!-- Full description with vertical wrap -->
                                 <?= nl2br(htmlspecialchars($d['defect_desc'])) ?>
                             </td>
                             <td><?= htmlspecialchars($d['deferred_by_name']) ?></td>
                             <td><?= date('d/m/Y', strtotime($d['deferral_date'])) ?></td>
 
-                            <!-- ACTIONS COLUMN -->
                             <td class="actions-cell">
                                 <?php if ($isActive): ?>
                                     <a href="clear_defect.php?id=<?= $d['id'] ?>" class="btn-clear" title="Clear Defect">
                                         Clear
                                     </a>
                                     <a href="edit_defect.php?id=<?= $d['id'] ?>" class="btn-edit" title="Edit Defect">
-                                        Edit
+                                        Edit/View
                                     </a>
                                 <?php else: ?>
                                     <span class="text-success">

@@ -539,7 +539,7 @@ if ($isGlobalView) {
                                         </a>
                                         <a href="edit_defect.php?id=<?= $d['id'] ?>"
                                             style="background:#d1ecf1; color:#0c5460; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin:0 4px; display:inline-block;">
-                                            Edit
+                                            Edit/View
                                         </a>
                                     </td>
                                 </tr>
