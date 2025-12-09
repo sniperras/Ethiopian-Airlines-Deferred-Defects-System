@@ -1,7 +1,7 @@
 <?php
 // db_connect.php - CHANGE ONLY THESE 4 LINES WITH YOUR HOSTING DETAILS
 $host     = 'localhost';
-$dbname   = 'et_add_follow_up';     // ← CHANGE TO YOUR DATABASE NAME
+$dbname   = 'et_deferred_defects';     // ← CHANGE TO YOUR DATABASE NAME
 $username = 'root';        // ← YOUR DB USERNAME
 $password = '';    // ← YOUR DB PASSWORD (from hosting panel)
 

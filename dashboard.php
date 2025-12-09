@@ -38,14 +38,33 @@ foreach ($tables as $fleetName => $table) {
     if ($regs) $fleetGroups[$fleetName] = $regs;
 }
 
-// === ACTIVE DEFECTS LIST (Personal - unchanged) ===
+// Assume these variables come from your authentication system
+// $username   = logged-in username
+// $user_role  = 'admin' or 'pilot' or whatever
+// $user_fleet = the fleet the user belongs to, e.g., "737fleet", "320fleet", "777fleet"
+
 if ($user_role === 'admin') {
-    $stmt = $pdo->query("SELECT * FROM deferred_defects WHERE status = 'active' ORDER BY deferral_date DESC LIMIT 50");
-} else {
-    $stmt = $pdo->prepare("SELECT * FROM deferred_defects WHERE deferred_by_name = ? AND status = 'active' ORDER BY deferral_date DESC");
-    $stmt->execute([$username]);
+    // Admin sees ALL active defects from ALL fleets
+    $sql  = "SELECT * FROM deferred_defects 
+             WHERE status = 'active' 
+             ORDER BY deferral_date DESC 
+             LIMIT 50";
+    $stmt = $pdo->query($sql);
 }
-$active_defects = $stmt->fetchAll();
+else {
+    // Non-admin users (pilots, engineers, etc.) see only their fleet's active defects
+    // We assume there's a column `fleet` in deferred_defects table (e.g., "737fleet")
+    $sql = "SELECT * FROM deferred_defects 
+            WHERE fleet = ? 
+              AND status = 'active' 
+            ORDER BY deferral_date DESC 
+            LIMIT 50";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$allowed_fleet]);   // $user_fleet comes from login credentials
+}
+
+$active_defects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // === STATISTICS - NOW FLEET-SPECIFIC FOR NON-ADMINS ===
 $today = date('Y-m-d');
@@ -95,8 +114,9 @@ if ($isGlobalView) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DefTrack | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css?v=11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -112,6 +132,7 @@ if ($isGlobalView) {
             --soft: rgba(0, 0, 0, 0.06);
         }
 
+<<<<<<< HEAD
         html,
         body {
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -216,11 +237,16 @@ if ($isGlobalView) {
             font-weight: 600;
             color: #314a5a;
         }
+=======
+
+        /* Form grid and small components */
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
 
         .text-center {
             text-align: center;
         }
 
+<<<<<<< HEAD
         .btn-submit-centered {
             background: var(--brand);
             color: #fff;
@@ -231,6 +257,8 @@ if ($isGlobalView) {
             cursor: pointer;
             box-shadow: 0 8px 22px rgba(35, 76, 106, 0.12);
         }
+=======
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
 
         /* Stats styling (re-used from original) */
         .stats-row {
@@ -305,6 +333,7 @@ if ($isGlobalView) {
             width: 100%;
         }
 
+<<<<<<< HEAD
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -351,6 +380,13 @@ if ($isGlobalView) {
             color: #5b7079;
             padding: 14px;
         }
+=======
+        .table thead th {
+            font-weight: 700;
+            color: #2d4452;
+        }
+
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
 
         /* Responsive adjustments */
         @media (max-width: 980px) {
@@ -383,8 +419,14 @@ if ($isGlobalView) {
             <h2>DefTrack</h2>
         </div>
         <div class="nav-user">
+<<<<<<< HEAD
             <span>User: <?= htmlspecialchars($username) ?>
                 <?php if ($user_role === 'admin'): ?> <small style="color:#1B3C53;">(Admin)</small><?php endif; ?>
+=======
+            <span><i class="fa-solid fa-user"></i>
+                <?= htmlspecialchars($username) ?>
+                <?php if ($user_role === 'admin'): ?> <small style="color:#a8e6cf;">(Admin)</small><?php endif; ?>
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
                 <?php if (!$isGlobalView && $allowed_fleet): ?> <small style="color:#f39c12;">(<?= $allowed_fleet ?> Fleet)</small><?php endif; ?>
             </span>
             <a href="view_all_defects.php" class="btn-view">View All Defects</a>
@@ -575,7 +617,11 @@ if ($isGlobalView) {
         <!-- FLEET-SPECIFIC STATS + PIE CHART -->
         <div class="stats-row">
             <div class="stats-left">
+<<<<<<< HEAD
                 <h3 style="margin:0 0 20px; color:#1B3C53;">
+=======
+                <h3 style="margin:0 0 20px; color:#ffffff;">
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
                     Defect Statistics
                     <?php if (!$isGlobalView): ?>
                         <small class="fleet-note">— <?= htmlspecialchars($allowed_fleet) ?> Fleet Only</small>
@@ -613,6 +659,7 @@ if ($isGlobalView) {
             </div>
         </div>
 
+<<<<<<< HEAD
        <!-- ACTIVE DEFECTS TABLE (Personal) -->
 <div class="card-compact">
     <h3 class="card-title">Your Active Deferred Defects (<?= count($active_defects) ?>)</h3>
@@ -680,6 +727,78 @@ if ($isGlobalView) {
         <p class="no-data">No active deferred defects found.</p>
     <?php endif; ?>
 </div>
+=======
+        <!-- ACTIVE DEFECTS TABLE (Personal) -->
+        <div class="card-compact">
+            <h3 class="card-title">Your Active Deferred Defects (<?= count($active_defects) ?>)</h3>
+            <?php if ($active_defects): ?>
+                <div class="table-responsive">
+                    <table class="table" style="border-collapse:separate; border-spacing:0;">
+                        <thead>
+                            <tr style="background:#234C6A; color:#ffffff; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">
+                                <th style="padding:14px 16px; border-top-left-radius:10px; color: #ffffff;">Date</th>
+                                <th style="padding:14px 16px; color: #ffffff">A/C</th>
+                                <th style="padding:14px 16px; color: #ffffff">Fleet</th>
+                                <th style="padding:14px 16px; color: #ffffff">ATA</th>
+                                <th style="padding:14px 16px; color: #ffffff">Description</th>
+                                <th style="padding:14px 16px; color: #ffffff">Status</th>
+                                <th style="padding:14px 16px; color: #ffffff">Due</th>
+                                <th style="padding:14px 16px; color: #ffffff">Reason</th>
+                                <th style="padding:14px 16px; border-top-right-radius:10px; text-align:center; color: #ffffff">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($active_defects as $d): ?>
+                                <tr style="background:#ffffff; border-bottom:1px solid #eef6fb;">
+                                    <td style="padding:14px 16px;"><?= date('d/m/Y', strtotime($d['deferral_date'])) ?></td>
+                                    <td style="padding:14px 16px; font-weight:600; color:#234C6A;"><strong><?= htmlspecialchars($d['ac_registration']) ?></strong></td>
+                                    <td style="padding:14px 16px;"><?= htmlspecialchars($d['fleet']) ?></td>
+                                    <td style="padding:14px 16px;"><?= htmlspecialchars($d['ata_seq']) ?></td>
+                                    <td style="padding:14px 16px;">
+                                        <?= htmlspecialchars(substr($d['defect_desc'], 0, floor(strlen($d['defect_desc'])))) ?>...
+                                    </td>
+
+
+                                    <!-- RED "ACTIVE" BADGE — SAME STYLE AS PART -->
+                                    <td style="padding:14px 16px;">
+                                        <span style="background:#e74c3c; color:#ffffff; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700; text-transform:uppercase;">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td style="padding:14px 16px;"><?= date('d/m/Y', strtotime($d['due_date'])) ?></td>
+
+                                    <!-- REASON BADGE (PART=red, TOOL=orange, TIME=green) -->
+                                    <td style="padding:14px 16px;">
+                                        <?php
+                                        $reason = strtoupper($d['reason'] ?? 'N/A');
+                                        $reasonColor = $reason === 'PART' ? '#e74c3c' : ($reason === 'TOOL' ? '#e67e22' : '#27ae60');
+                                        ?>
+                                        <span style="background:<?= $reasonColor ?>; color:#fff; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700;">
+                                            <?= $reason ?>
+                                        </span>
+                                    </td>
+
+                                    <td class="actions-cell" style="padding:14px 16px; text-align:center;">
+                                        <a href="clear_defect.php?id=<?= $d['id'] ?>"
+                                            style="background:#27ae60; color:white; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin:0 4px; display:inline-block;">
+                                            Clear
+                                        </a>
+                                        <a href="edit_defect.php?id=<?= $d['id'] ?>"
+                                            style="background:#d1ecf1; color:#0c5460; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin:0 4px; display:inline-block;">
+                                            Edit/View
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <p class="no-data">No active deferred defects found.</p>
+            <?php endif; ?>
+        </div>
+>>>>>>> 57b81f5dc5403d93167ae4e2d8a44074ef42cc24
     </div>
 
     <!-- CLIENT-SIDE JAVASCRIPT: validation + improved reason handling

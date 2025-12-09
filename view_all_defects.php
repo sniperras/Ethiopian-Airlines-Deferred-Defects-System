@@ -19,11 +19,16 @@ $status_filter = $_GET['status'] ?? 'ALL';
 $fleet_filter  = $_GET['fleet']  ?? 'ALL';
 $search        = trim($_GET['search'] ?? '');
 
+// Force fleet filter for non-admin locked users
+if (!$is_admin && $is_fleet_locked && $user_fleet !== '') {
+    $fleet_filter = $user_fleet;
+}
+
 $sql = "SELECT * FROM deferred_defects WHERE 1=1";
 $params = [];
 
-if (!$is_admin && $is_fleet_locked) {
-    $sql .= " AND fleet = ?";
+if (!$is_admin && $is_fleet_locked && $user_fleet !== '') {
+    $sql .= " AND UPPER(fleet) = ?";
     $params[] = $user_fleet;
 }
 if ($status_filter !== 'ALL') {
@@ -31,8 +36,8 @@ if ($status_filter !== 'ALL') {
     $params[] = strtoupper($status_filter);
 }
 if ($fleet_filter !== 'ALL') {
-    $sql .= " AND fleet = ?";
-    $params[] = $params[] = $fleet_filter;
+    $sql .= " AND UPPER(fleet) = ?";
+    $params[] = $fleet_filter;
 }
 if ($search !== '') {
     $sql .= " AND (ac_registration LIKE ? OR defect_desc LIKE ? OR tsfn LIKE ? OR ata_seq LIKE ? OR rid LIKE ? OR add_log_no LIKE ?)";
@@ -54,7 +59,7 @@ $defects = $stmt->fetchAll();
     <title>All Deferred Defects | DefTrack</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/view_defects.css?v=4">
+    <link rel="stylesheet" href="assets/css/view_defects.css">
 </head>
 <body>
 
@@ -103,17 +108,27 @@ $defects = $stmt->fetchAll();
                         <option value="CLEARED" <?= $status_filter==='CLEARED'?'selected':'' ?>>CLEARED</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <select name="fleet">
-                        <option value="ALL" <?= $fleet_filter==='ALL'?'selected':'' ?>>All Fleets</option>
-                        <option value="Airbus">Airbus</option>
-                        <option value="787">787</option>
-                        <option value="777">777</option>
-                        <option value="737">737</option>
-                        <option value="Cargo">Cargo</option>
-                        <option value="Q400">Q400</option>
-                    </select>
-                </div>
+
+                <!-- FLEET FILTER: Admin sees dropdown | Normal user sees locked info -->
+                <?php if ($is_admin): ?>
+                    <div class="filter-group">
+                        <select name="fleet">
+                            <option value="ALL" <?= $fleet_filter==='ALL'?'selected':'' ?>>All Fleets</option>
+                            <option value="Airbus" <?= $fleet_filter==='Airbus'?'selected':'' ?>>Airbus</option>
+                            <option value="787" <?= $fleet_filter==='787'?'selected':'' ?>>787</option>
+                            <option value="777" <?= $fleet_filter==='777'?'selected':'' ?>>777</option>
+                            <option value="737" <?= $fleet_filter==='737'?'selected':'' ?>>737</option>
+                            <option value="Cargo" <?= $fleet_filter==='Cargo'?'selected':'' ?>>Cargo</option>
+                            <option value="Q400" <?= $fleet_filter==='Q400'?'selected':'' ?>>Q400</option>
+                        </select>
+                    </div>
+                <?php else: ?>
+                    <input type="hidden" name="fleet" value="<?= htmlspecialchars($user_fleet) ?>">
+                    <div class="fleet-locked-info">
+                        <i class="fa fa-lock"></i> Viewing: <strong><?= htmlspecialchars($user_fleet) ?: 'Restricted' ?> Fleet</strong>
+                    </div>
+                <?php endif; ?>
+
                 <div class="filter-actions">
                     <button type="submit" class="btn-filter">Filter</button>
                     <a href="export_defects.php?<?= http_build_query($_GET) ?>" class="btn-export">
@@ -125,7 +140,8 @@ $defects = $stmt->fetchAll();
 
         <div class="card-compact">
             <?php if ($defects): ?>
-            <div class="table-responsive">
+            <!-- ONLY CHANGE: Added fit-to-screen class -->
+            <div class="table-responsive fit-to-screen">
                 <table class="defects-table">
                     <thead>
                         <tr>
@@ -180,19 +196,18 @@ $defects = $stmt->fetchAll();
                             <td class="mono"><?= htmlspecialchars($d['tsfn'] ?? '-') ?></td>
                             <td class="mono"><?= htmlspecialchars($d['rid'] ?? '-') ?></td>
                             <td class="desc-cell">
-                                <?= htmlspecialchars(strlen($d['defect_desc']) > 80 ? substr($d['defect_desc'],0,80).'...' : $d['defect_desc']) ?>
+                                <?= nl2br(htmlspecialchars($d['defect_desc'])) ?>
                             </td>
                             <td><?= htmlspecialchars($d['deferred_by_name']) ?></td>
                             <td><?= date('d/m/Y', strtotime($d['deferral_date'])) ?></td>
 
-                            <!-- ACTIONS COLUMN — EDIT ONLY FOR ACTIVE -->
                             <td class="actions-cell">
                                 <?php if ($isActive): ?>
                                     <a href="clear_defect.php?id=<?= $d['id'] ?>" class="btn-clear" title="Clear Defect">
                                         Clear
                                     </a>
                                     <a href="edit_defect.php?id=<?= $d['id'] ?>" class="btn-edit" title="Edit Defect">
-                                        Edit
+                                        Edit/View
                                     </a>
                                 <?php else: ?>
                                     <span class="text-success">
