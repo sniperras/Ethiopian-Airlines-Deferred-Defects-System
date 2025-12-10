@@ -409,7 +409,20 @@ if ($isGlobalView) {
                 unset($_SESSION['success_message']); ?>
             </div>
         <?php endif; ?>
-
+<!-- SOAP Import Button -->
+<div class="card">
+    <h3>Scrape & Auto-Import Defects</h3>
+    <p>Automatically pull latest deferred defects from source system</p>
+    <a href="add_defect_soap.php" class="btn btn-success" onclick="return confirm('Run scraper and import all new defects now?')">
+        Run SOAP Import Now
+    </a>
+    <?php if (isset($_SESSION['soap_success'])): ?>
+        <div class="alert alert-success mt-2"><?php echo $_SESSION['soap_success']; unset($_SESSION['soap_success']); ?></div>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['soap_error'])): ?>
+        <div class="alert alert-danger mt-2"><?php echo $_SESSION['soap_error']; unset($_SESSION['soap_error']); ?></div>
+    <?php endif; ?>
+</div>
         <!-- ADD DEFECT FORM — MODIFIED: hides & disables non-selected reason inputs -->
         <div class="card-compact">
             <h3 class="card-title">Add New Deferred Defect</h3>
