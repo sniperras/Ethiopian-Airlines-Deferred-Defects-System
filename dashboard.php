@@ -38,14 +38,33 @@ foreach ($tables as $fleetName => $table) {
     if ($regs) $fleetGroups[$fleetName] = $regs;
 }
 
-// === ACTIVE DEFECTS LIST (Personal - unchanged) ===
+// Assume these variables come from your authentication system
+// $username   = logged-in username
+// $user_role  = 'admin' or 'pilot' or whatever
+// $user_fleet = the fleet the user belongs to, e.g., "737fleet", "320fleet", "777fleet"
+
 if ($user_role === 'admin') {
-    $stmt = $pdo->query("SELECT * FROM deferred_defects WHERE status = 'active' ORDER BY deferral_date DESC LIMIT 50");
-} else {
-    $stmt = $pdo->prepare("SELECT * FROM deferred_defects WHERE deferred_by_name = ? AND status = 'active' ORDER BY deferral_date DESC");
-    $stmt->execute([$username]);
+    // Admin sees ALL active defects from ALL fleets
+    $sql  = "SELECT * FROM deferred_defects 
+             WHERE status = 'active' 
+             ORDER BY deferral_date DESC 
+             LIMIT 50";
+    $stmt = $pdo->query($sql);
 }
-$active_defects = $stmt->fetchAll();
+else {
+    // Non-admin users (pilots, engineers, etc.) see only their fleet's active defects
+    // We assume there's a column `fleet` in deferred_defects table (e.g., "737fleet")
+    $sql = "SELECT * FROM deferred_defects 
+            WHERE fleet = ? 
+              AND status = 'active' 
+            ORDER BY deferral_date DESC 
+            LIMIT 50";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$allowed_fleet]);   // $user_fleet comes from login credentials
+}
+
+$active_defects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // === STATISTICS - NOW FLEET-SPECIFIC FOR NON-ADMINS ===
 $today = date('Y-m-d');
@@ -95,8 +114,9 @@ if ($isGlobalView) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DefTrack | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css?v=11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -112,125 +132,13 @@ if ($isGlobalView) {
             --soft: rgba(0, 0, 0, 0.06);
         }
 
-        html,
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            background: var(--bg);
-            margin: 0;
-            padding: 0;
-            color: #0f1724;
-        }
-
-        nav.top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 14px 24px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-            border-bottom: 4px solid var(--brand);
-        }
-
-        nav .nav-brand h2 {
-            margin: 0;
-            color: var(--brand);
-        }
-
-        nav .nav-user {
-            font-size: 0.95rem;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            color: #1B3C53;
-        }
-
-        .container-compact {
-            max-width: 1180px;
-            margin: 26px auto;
-            padding: 0 16px;
-        }
-
-        .card-compact {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            margin-bottom: 28px;
-        }
-
-        .card-title {
-            margin: 0 0 18px;
-            color: var(--brand);
-        }
 
         /* Form grid and small components */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            font-weight: 600;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="number"],
-        select,
-        textarea {
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1px solid #e3eef6;
-            background: #fcfeff;
-            font-size: 0.95rem;
-            box-shadow: none;
-        }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .radio-inline {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .radio-inline label {
-            font-weight: 600;
-            color: #314a5a;
-        }
 
         .text-center {
             text-align: center;
         }
 
-        .btn-submit-centered {
-            background: var(--brand);
-            color: #fff;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 8px 22px rgba(35, 76, 106, 0.12);
-        }
 
         /* Stats styling (re-used from original) */
         .stats-row {
@@ -305,52 +213,11 @@ if ($isGlobalView) {
             width: 100%;
         }
 
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .table th,
-        .table td {
-            text-align: left;
-            padding: 10px 12px;
-            border-bottom: 1px solid #eef6fb;
-            font-size: 0.95rem;
-        }
-
         .table thead th {
             font-weight: 700;
             color: #2d4452;
         }
 
-        .actions-cell {
-            text-align: center;
-        }
-
-        .btn-clear,
-        .btn-edit {
-            text-decoration: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-
-        .btn-clear {
-            background: #08CB00;
-            color: #ffffff;
-            margin-right: 8px;
-        }
-
-        .btn-edit {
-            background: #d9edf7;
-            color: #135b73;
-        }
-
-        .no-data {
-            color: #5b7079;
-            padding: 14px;
-        }
 
         /* Responsive adjustments */
         @media (max-width: 980px) {
@@ -383,8 +250,9 @@ if ($isGlobalView) {
             <h2>DefTrack</h2>
         </div>
         <div class="nav-user">
-            <span>User: <?= htmlspecialchars($username) ?>
-                <?php if ($user_role === 'admin'): ?> <small style="color:#1B3C53;">(Admin)</small><?php endif; ?>
+            <span><i class="fa-solid fa-user"></i>
+                <?= htmlspecialchars($username) ?>
+                <?php if ($user_role === 'admin'): ?> <small style="color:#a8e6cf;">(Admin)</small><?php endif; ?>
                 <?php if (!$isGlobalView && $allowed_fleet): ?> <small style="color:#f39c12;">(<?= $allowed_fleet ?> Fleet)</small><?php endif; ?>
             </span>
             <a href="view_all_defects.php" class="btn-view">View All Defects</a>
@@ -588,7 +456,7 @@ if ($isGlobalView) {
         <!-- FLEET-SPECIFIC STATS + PIE CHART -->
         <div class="stats-row">
             <div class="stats-left">
-                <h3 style="margin:0 0 20px; color:#1B3C53;">
+                <h3 style="margin:0 0 20px; color:#ffffff;">
                     Defect Statistics
                     <?php if (!$isGlobalView): ?>
                         <small class="fleet-note">— <?= htmlspecialchars($allowed_fleet) ?> Fleet Only</small>
@@ -684,7 +552,7 @@ if ($isGlobalView) {
                                         </a>
                                         <a href="edit_defect.php?id=<?= $d['id'] ?>"
                                             style="background:#d1ecf1; color:#0c5460; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin:0 4px; display:inline-block;">
-                                            Edit
+                                            Edit/View
                                         </a>
                                     </td>
                                 </tr>
