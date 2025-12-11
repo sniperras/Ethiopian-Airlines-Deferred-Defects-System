@@ -1,9 +1,8 @@
 {
-  "source_url": "http://svdcmpa01/maintenix/web/inventory/InventoryDetails.jsp?aInventory=%7BDES%7DGEQQAKJUAQGABKrDiISAQRZgs5DmWwI5V2eDIQdNBB8%3D&aReturnToPage=%2Fmaintenix%3A87c27d6dbdd84a7aa48b4cce01d2ff62&aTab=Open",
+  "source_url": "http://svdcmpa01/maintenix/web/inventory/InventoryDetails.jsp?aInventory=%7BDES%7DGEQQAKJUAQGABKrDiISAQRZgs5DmWwI5V2eDIQdNBB8%3D&aReturnToPage=%2Fmaintenix%3A87c27d6dbdd84a7aa48b4cce01d2ff62&aTab=Open.OpenFaults",
   "login_url": "http://svdcmpa01/maintenix/common/security/login.jsp",
   "credentials": {
     "username": "36689",
     "password": "112277"
-  },
-  "scrape_interval_minutes": 60
+  }
 }
