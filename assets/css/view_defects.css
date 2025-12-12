@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 1200px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #1B3C53 0%, #234C6A 100%);

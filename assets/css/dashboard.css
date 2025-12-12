@@ -12,6 +12,121 @@
     box-sizing: border-box;
 }
 
+    /* FULL WIDTH WITH 70px LEFT/RIGHT GAP */
+    .full-width-dashboard {
+        margin-left: 70px;
+        margin-right: 70px;
+        max-width: calc(100% - 140px);
+    }
+
+    /* Make all cards and tables inside use full available width */
+    .full-width-dashboard .card-compact,
+    .full-width-dashboard .stats-row,
+    .full-width-dashboard .table-responsive {
+        width: 100%;
+        max-width: 100%;
+    }
+
+   
+
+    .full-width-dashboard .table {
+        width: 100% !important;
+        min-width: 1200px;
+    }
+
+    /* Fix the stats row to stretch properly */
+    .full-width-dashboard .stats-row {
+        display: flex;
+        gap: 30px;
+        margin: 40px 0;
+    }
+
+    /* Beautiful side-by-side action buttons */
+.action-buttons {
+    display: inline-flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Only wraps on very small screens */
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: white !important;
+    min-width: 85px;
+    height: 42px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.clear-btn {
+    background: #27ae60;
+}
+
+.clear-btn:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(39,174,96,0.4);
+}
+
+.edit-btn {
+    background: #3498db;
+}
+
+.edit-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52,152,219,0.4);
+}
+
+/* Optional: Add icons for extra polish */
+.clear-btn::before {
+    content: "Check";
+    margin-right: 6px;
+    font-weight: 900;
+}
+
+.edit-btn::before {
+    content: "Edit";
+    margin-right: 6px;
+    font-weight: 900;
+}
+
+    .btn-sm {
+    padding: 8px 14px !important;
+    font-size: 0.9rem !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+}
+
+    .full-width-dashboard .stats-left,
+    .full-width-dashboard .stats-right {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Responsive fallback for mobile */
+    @media (max-width: 992px) {
+        .full-width-dashboard {
+            margin-left: 20px !important;
+            margin-right: 20px !important;
+            max-width: calc(100% - 40px) !important;
+        }
+        .full-width-dashboard .stats-row {
+            flex-direction: column;
+        }
+    }
+
+
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #1B3C53 0%, #234C6A 100%);
