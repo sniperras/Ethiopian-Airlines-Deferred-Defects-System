@@ -162,14 +162,89 @@ foreach ($files as $file) {
 
 $pdo->commit();
 
-// Final message
-$message = "<strong>FULL FLEET IMPORT COMPLETE!</strong><br>";
-$message .= "<strong>$total_inserted</strong> new defects added<br>";
-if ($total_skipped) $message .= "<strong>$total_skipped</strong> duplicates skipped<br>";
-if ($total_failed) $message .= "<strong>$total_failed</strong> failed (check error log)<br>";
-$message .= "<small>" . implode("<br>", $report) . "</small>";
+// =====================================================================
+// AUTO FIX FLEET NAMES AFTER SUCCESSFUL IMPORT
+// =====================================================================
+try {
+    $pdo->exec("UPDATE deferred_defects SET fleet = 'Airbus' WHERE fleet = 'A350'");
+
+    error_log("Fleet name standardization completed successfully.");
+} catch (Exception $e) {
+    error_log("Fleet name fix failed: " . $e->getMessage());
+}
+
+/// === BUILD BEAUTIFUL SUCCESS MESSAGE (FIXED VERSION) ===
+$message = '<div class="alert alert-success shadow-lg border-0">';
+$message .= '<h4 class="alert-heading mb-3"><strong>🎉 FULL FLEET IMPORT COMPLETE!</strong></h4>';
+$message .= '<div class="row mb-3">';
+$message .= '    <div class="col-md-4 text-center">';
+$message .= '        <h2 class="text-success mb-0"><strong>' . number_format($total_inserted) . '</strong></h2>';
+$message .= '        <p class="mb-0 fw-bold">New Defects Added</p>';
+$message .= '    </div>';
+$message .= '    <div class="col-md-4 text-center">';
+$message .= '        <h2 class="text-warning mb-0"><strong>' . number_format($total_skipped) . '</strong></h2>';
+$message .= '        <p class="mb-0 fw-bold">Duplicates Skipped</p>';
+$message .= '    </div>';
+$message .= '    <div class="col-md-4 text-center">';
+$message .= '        <h2 class="text-danger mb-0"><strong>' . number_format($total_failed) . '</strong></h2>';
+$message .= '        <p class="mb-0 fw-bold">Failed (logged)</p>';
+$message .= '    </div>';
+$message .= '</div>';
+
+$message .= '<hr class="my-4">';
+
+$message .= '<h5 class="mb-3"><strong>📊 Per-Aircraft Summary</strong> (' . count($files) . ' aircraft processed)</h5>';
+$message .= '<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">';
+
+foreach ($report as $line) {
+
+    // Extract correct registration from the FILENAME inside each line
+    // Line looks like: "✅ defects_latest_ET-ARH.json → +3 new | 1 skipped | 0 failed"
+    if (preg_match('/defects_latest_([^ ]+)\.json/', $line, $m)) {
+        $reg = $m[1];
+    } else {
+        $reg = 'Unknown';
+    }
+
+    // CLASSIFY CARD COLOR
+    if (strpos($line, 'Invalid JSON') !== false) {
+        $cardClass = 'border-danger text-danger';
+        $icon = '❌';
+    } elseif (strpos($line, 'No defects') !== false || strpos($line, 'empty') !== false) {
+        $cardClass = 'border-warning text-warning';
+        $icon = 'ℹ️';
+    } elseif (preg_match('/(\d+) failed/', $line, $f) && $f[1] > 0) {
+        $cardClass = 'border-danger text-danger';
+        $icon = '❌';
+    } elseif (preg_match('/(\d+) skipped/', $line, $s) && $s[1] > 0) {
+        $cardClass = 'border-info text-info';
+        $icon = '⏭️';
+    } else {
+        $cardClass = 'border-success text-success';
+        $icon = '✅';
+    }
+
+    // Remove the long filename from the display text
+    $clean = preg_replace('/defects_latest_[^ ]+\.json → /', '', $line);
+
+    $message .= '<div class="col">';
+    $message .= '    <div class="card h-100 ' . $cardClass . ' shadow-sm">';
+    $message .= '        <div class="card-body py-3">';
+    $message .= '            <h6 class="card-title mb-2"><strong>' . htmlspecialchars($reg) . '</strong></h6>';
+    $message .= '            <p class="card-text mb-0 small">' . $icon . ' ' . htmlspecialchars($clean) . '</p>';
+    $message .= '        </div>';
+    $message .= '    </div>';
+    $message .= '</div>';
+}
+
+$message .= '</div>'; // end row
+$message .= '<div class="mt-4 text-end small text-muted">';
+$message .= 'Imported on ' . date('M j, Y \a\t g:i A');
+$message .= '</div>';
+$message .= '</div>'; // end alert
 
 $_SESSION['success_message'] = $message;
 header("Location: dashboard.php");
 exit();
+
 ?>

@@ -673,7 +673,7 @@ if ($isGlobalView) {
                                             <a href="clear_defect.php?id=<?= $d['id'] ?>" class="action-btn clear-btn">
                                                 <i class="fas fa-check-circle"></i> Clear
                                             </a>
-                                            <a> / </a>
+                                            <a>  / </a>
                                             <a href="edit_defect.php?id=<?= $d['id'] ?>" class="action-btn edit-btn">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
