@@ -1,0 +1,1141 @@
+{
+  "last_full_run": "2025-12-12T12:15:16.862186",
+  "total_aircraft_scraped": 162,
+  "total_defects_found": 15920,
+  "aircraft_summary": [
+    {
+      "registration": "ET-ATQ",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 260,
+      "scraped_at": "2025-12-12T11:43:01.093815"
+    },
+    {
+      "registration": "ET-ATR",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 333,
+      "scraped_at": "2025-12-12T11:43:18.969084"
+    },
+    {
+      "registration": "ET-ATY",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 268,
+      "scraped_at": "2025-12-12T11:43:34.450706"
+    },
+    {
+      "registration": "ET-AUA",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 294,
+      "scraped_at": "2025-12-12T11:43:50.236208"
+    },
+    {
+      "registration": "ET-AUB",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 271,
+      "scraped_at": "2025-12-12T11:44:07.332112"
+    },
+    {
+      "registration": "ET-AUC",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 208,
+      "scraped_at": "2025-12-12T11:44:21.399885"
+    },
+    {
+      "registration": "ET-AVB",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 180,
+      "scraped_at": "2025-12-12T11:44:33.005520"
+    },
+    {
+      "registration": "ET-AVC",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 105,
+      "scraped_at": "2025-12-12T11:44:42.855602"
+    },
+    {
+      "registration": "ET-AVD",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 222,
+      "scraped_at": "2025-12-12T11:44:56.384514"
+    },
+    {
+      "registration": "ET-AVE",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 170,
+      "scraped_at": "2025-12-12T11:45:07.417114"
+    },
+    {
+      "registration": "ET-AWM",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 150,
+      "scraped_at": "2025-12-12T11:45:20.215365"
+    },
+    {
+      "registration": "ET-AWN",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 143,
+      "scraped_at": "2025-12-12T11:45:33.661970"
+    },
+    {
+      "registration": "ET-AWO",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 115,
+      "scraped_at": "2025-12-12T11:45:46.401484"
+    },
+    {
+      "registration": "ET-AWP",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 229,
+      "scraped_at": "2025-12-12T11:45:56.726743"
+    },
+    {
+      "registration": "ET-AYA",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 94,
+      "scraped_at": "2025-12-12T11:46:08.431878"
+    },
+    {
+      "registration": "ET-AYB",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 106,
+      "scraped_at": "2025-12-12T11:46:18.396419"
+    },
+    {
+      "registration": "ET-AYM",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 110,
+      "scraped_at": "2025-12-12T11:46:29.593289"
+    },
+    {
+      "registration": "ET-AYN",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 94,
+      "scraped_at": "2025-12-12T11:46:40.813870"
+    },
+    {
+      "registration": "ET-AZI",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 48,
+      "scraped_at": "2025-12-12T11:46:50.888608"
+    },
+    {
+      "registration": "ET-AZN",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 63,
+      "scraped_at": "2025-12-12T11:47:00.708923"
+    },
+    {
+      "registration": "ET-BCD",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 18,
+      "scraped_at": "2025-12-12T11:47:10.254236"
+    },
+    {
+      "registration": "ET-BCE",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 17,
+      "scraped_at": "2025-12-12T11:47:19.423396"
+    },
+    {
+      "registration": "ET-BAW",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 46,
+      "scraped_at": "2025-12-12T11:47:29.093343"
+    },
+    {
+      "registration": "ET-BAX",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 42,
+      "scraped_at": "2025-12-12T11:47:38.601331"
+    },
+    {
+      "registration": "ET-BAY",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 43,
+      "scraped_at": "2025-12-12T11:47:48.818871"
+    },
+    {
+      "registration": "ET-BAZ",
+      "oem_model": "A350",
+      "fleet": "Airbus A350 Fleet",
+      "defects_count": 21,
+      "scraped_at": "2025-12-12T11:47:58.215205"
+    },
+    {
+      "registration": "ET-AWC",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 38,
+      "scraped_at": "2025-12-12T11:48:12.001007"
+    },
+    {
+      "registration": "ET-ALM",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 61,
+      "scraped_at": "2025-12-12T11:48:28.024604"
+    },
+    {
+      "registration": "ET-ALN",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 255,
+      "scraped_at": "2025-12-12T11:48:39.798538"
+    },
+    {
+      "registration": "ET-BCF",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 9,
+      "scraped_at": "2025-12-12T11:48:49.166631"
+    },
+    {
+      "registration": "ET-APL",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 60,
+      "scraped_at": "2025-12-12T11:49:02.724320"
+    },
+    {
+      "registration": "ET-APM",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 240,
+      "scraped_at": "2025-12-12T11:49:19.189552"
+    },
+    {
+      "registration": "ET-APO",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 60,
+      "scraped_at": "2025-12-12T11:49:33.745248"
+    },
+    {
+      "registration": "ET-AQN",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 90,
+      "scraped_at": "2025-12-12T11:49:47.658951"
+    },
+    {
+      "registration": "ET-AQO",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 77,
+      "scraped_at": "2025-12-12T11:50:00.298278"
+    },
+    {
+      "registration": "ET-AQP",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 75,
+      "scraped_at": "2025-12-12T11:50:13.669789"
+    },
+    {
+      "registration": "ET-AQQ",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 69,
+      "scraped_at": "2025-12-12T11:50:25.624962"
+    },
+    {
+      "registration": "ET-ASJ",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 43,
+      "scraped_at": "2025-12-12T11:50:39.076242"
+    },
+    {
+      "registration": "ET-AVX",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 31,
+      "scraped_at": "2025-12-12T11:50:51.025750"
+    },
+    {
+      "registration": "ET-AWR",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 69,
+      "scraped_at": "2025-12-12T11:51:03.742253"
+    },
+    {
+      "registration": "ET-AWS",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 29,
+      "scraped_at": "2025-12-12T11:51:13.976761"
+    },
+    {
+      "registration": "ET-AXI",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 332,
+      "scraped_at": "2025-12-12T11:51:26.854671"
+    },
+    {
+      "registration": "ET-AXO",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 224,
+      "scraped_at": "2025-12-12T11:51:38.793376"
+    },
+    {
+      "registration": "ET-AYL",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 19,
+      "scraped_at": "2025-12-12T11:51:53.689863"
+    },
+    {
+      "registration": "ET-AYP",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 18,
+      "scraped_at": "2025-12-12T11:52:05.139446"
+    },
+    {
+      "registration": "ET-AYU",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 189,
+      "scraped_at": "2025-12-12T11:52:16.430914"
+    },
+    {
+      "registration": "ET-AZY",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 158,
+      "scraped_at": "2025-12-12T11:52:27.003406"
+    },
+    {
+      "registration": "ET-AZZ",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 152,
+      "scraped_at": "2025-12-12T11:52:37.646125"
+    },
+    {
+      "registration": "ET-BAG",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 112,
+      "scraped_at": "2025-12-12T11:52:48.445952"
+    },
+    {
+      "registration": "ET-BAH",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 106,
+      "scraped_at": "2025-12-12T11:52:58.691175"
+    },
+    {
+      "registration": "ET-BBR",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 27,
+      "scraped_at": "2025-12-12T11:53:08.447634"
+    },
+    {
+      "registration": "ET-BCI",
+      "oem_model": "737",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 0,
+      "scraped_at": "2025-12-12T11:53:17.620058"
+    },
+    {
+      "registration": "ET-AVI",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 35,
+      "scraped_at": "2025-12-12T11:53:28.029580"
+    },
+    {
+      "registration": "ET-AVK",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 42,
+      "scraped_at": "2025-12-12T11:53:39.428149"
+    },
+    {
+      "registration": "ET-AVL",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 27,
+      "scraped_at": "2025-12-12T11:53:50.467739"
+    },
+    {
+      "registration": "ET-AVM",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 53,
+      "scraped_at": "2025-12-12T11:54:01.769860"
+    },
+    {
+      "registration": "ET-AWF",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 21,
+      "scraped_at": "2025-12-12T11:54:12.102133"
+    },
+    {
+      "registration": "ET-AWG",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 25,
+      "scraped_at": "2025-12-12T11:54:22.098980"
+    },
+    {
+      "registration": "ET-AWH",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 47,
+      "scraped_at": "2025-12-12T11:54:32.256566"
+    },
+    {
+      "registration": "ET-AWI",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 34,
+      "scraped_at": "2025-12-12T11:54:42.023093"
+    },
+    {
+      "registration": "ET-AWJ",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 29,
+      "scraped_at": "2025-12-12T11:54:52.322744"
+    },
+    {
+      "registration": "ET-AWK",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 17,
+      "scraped_at": "2025-12-12T11:55:02.881918"
+    },
+    {
+      "registration": "ET-AXG",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 26,
+      "scraped_at": "2025-12-12T11:55:13.250087"
+    },
+    {
+      "registration": "ET-AZA",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 22,
+      "scraped_at": "2025-12-12T11:55:23.481880"
+    },
+    {
+      "registration": "ET-AZO",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 47,
+      "scraped_at": "2025-12-12T11:55:42.956717"
+    },
+    {
+      "registration": "ET-BAI",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 14,
+      "scraped_at": "2025-12-12T11:55:52.587822"
+    },
+    {
+      "registration": "ET-BAJ",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 6,
+      "scraped_at": "2025-12-12T11:56:02.149353"
+    },
+    {
+      "registration": "ET-BAK",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 6,
+      "scraped_at": "2025-12-12T11:56:11.247881"
+    },
+    {
+      "registration": "ET-BAL",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 13,
+      "scraped_at": "2025-12-12T11:56:20.859762"
+    },
+    {
+      "registration": "ET-BAM",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 4,
+      "scraped_at": "2025-12-12T11:56:29.816247"
+    },
+    {
+      "registration": "ET-BAN",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 9,
+      "scraped_at": "2025-12-12T11:56:39.568174"
+    },
+    {
+      "registration": "ET-BAO",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 10,
+      "scraped_at": "2025-12-12T11:56:48.968608"
+    },
+    {
+      "registration": "ET-BBA",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 14,
+      "scraped_at": "2025-12-12T11:56:58.561991"
+    },
+    {
+      "registration": "ET-BBC",
+      "oem_model": "737MAX",
+      "fleet": "Boeing 737 Fleet",
+      "defects_count": 6,
+      "scraped_at": "2025-12-12T11:57:07.899377"
+    },
+    {
+      "registration": "3C-MAG",
+      "oem_model": "767",
+      "fleet": "Boeing 767 Fleet",
+      "defects_count": 72,
+      "scraped_at": "2025-12-12T11:57:18.770928"
+    },
+    {
+      "registration": "ET-ALO",
+      "oem_model": "767",
+      "fleet": "Boeing 767 Fleet",
+      "defects_count": 249,
+      "scraped_at": "2025-12-12T11:57:33.943705"
+    },
+    {
+      "registration": "ET-ALP",
+      "oem_model": "767",
+      "fleet": "Boeing 767 Fleet",
+      "defects_count": 212,
+      "scraped_at": "2025-12-12T11:57:48.481934"
+    },
+    {
+      "registration": "ET-BBE",
+      "oem_model": "767",
+      "fleet": "Boeing 767 Fleet",
+      "defects_count": 10,
+      "scraped_at": "2025-12-12T11:57:58.077186"
+    },
+    {
+      "registration": "ET-BBF",
+      "oem_model": "767",
+      "fleet": "Boeing 767 Fleet",
+      "defects_count": 17,
+      "scraped_at": "2025-12-12T11:58:07.931815"
+    },
+    {
+      "registration": "ET-ANN",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 113,
+      "scraped_at": "2025-12-12T11:58:24.296889"
+    },
+    {
+      "registration": "ET-ANO",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 103,
+      "scraped_at": "2025-12-12T11:58:37.633814"
+    },
+    {
+      "registration": "ET-ANP",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 80,
+      "scraped_at": "2025-12-12T11:58:52.482235"
+    },
+    {
+      "registration": "ET-ANQ",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 99,
+      "scraped_at": "2025-12-12T11:59:07.830254"
+    },
+    {
+      "registration": "ET-ANR",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 121,
+      "scraped_at": "2025-12-12T11:59:22.066553"
+    },
+    {
+      "registration": "ET-AQL",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 139,
+      "scraped_at": "2025-12-12T11:59:33.976077"
+    },
+    {
+      "registration": "ET-APX",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 109,
+      "scraped_at": "2025-12-12T11:59:45.082877"
+    },
+    {
+      "registration": "ET-APY",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 109,
+      "scraped_at": "2025-12-12T11:59:58.064005"
+    },
+    {
+      "registration": "ET-ASK",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 127,
+      "scraped_at": "2025-12-12T12:00:14.042600"
+    },
+    {
+      "registration": "ET-ASL",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 103,
+      "scraped_at": "2025-12-12T12:00:28.658260"
+    },
+    {
+      "registration": "ET-BBG",
+      "oem_model": "777",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 26,
+      "scraped_at": "2025-12-12T12:00:38.446012"
+    },
+    {
+      "registration": "ET-APS",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 70,
+      "scraped_at": "2025-12-12T12:00:51.068611"
+    },
+    {
+      "registration": "ET-APU",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 83,
+      "scraped_at": "2025-12-12T12:01:04.526090"
+    },
+    {
+      "registration": "ET-ARI",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 89,
+      "scraped_at": "2025-12-12T12:01:15.258436"
+    },
+    {
+      "registration": "ET-ARJ",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 84,
+      "scraped_at": "2025-12-12T12:01:25.611687"
+    },
+    {
+      "registration": "ET-ARK",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 44,
+      "scraped_at": "2025-12-12T12:01:36.941559"
+    },
+    {
+      "registration": "ET-AVN",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 64,
+      "scraped_at": "2025-12-12T12:01:47.149981"
+    },
+    {
+      "registration": "ET-AVQ",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 38,
+      "scraped_at": "2025-12-12T12:01:57.868529"
+    },
+    {
+      "registration": "ET-AVT",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 51,
+      "scraped_at": "2025-12-12T12:02:08.087654"
+    },
+    {
+      "registration": "ET-AWE",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 31,
+      "scraped_at": "2025-12-12T12:02:18.977079"
+    },
+    {
+      "registration": "ET-BAA",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 13,
+      "scraped_at": "2025-12-12T12:02:27.871045"
+    },
+    {
+      "registration": "ET-BAB",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 10,
+      "scraped_at": "2025-12-12T12:02:37.088326"
+    },
+    {
+      "registration": "ET-BAC",
+      "oem_model": "777F",
+      "fleet": "Boeing 777 Fleet",
+      "defects_count": 7,
+      "scraped_at": "2025-12-12T12:02:46.081069"
+    },
+    {
+      "registration": "ET-AOO",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 236,
+      "scraped_at": "2025-12-12T12:02:59.149026"
+    },
+    {
+      "registration": "ET-AOP",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 253,
+      "scraped_at": "2025-12-12T12:03:13.816937"
+    },
+    {
+      "registration": "ET-AOQ",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 361,
+      "scraped_at": "2025-12-12T12:03:25.865487"
+    },
+    {
+      "registration": "ET-AOR",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 309,
+      "scraped_at": "2025-12-12T12:03:41.146772"
+    },
+    {
+      "registration": "ET-AOS",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 350,
+      "scraped_at": "2025-12-12T12:04:04.948828"
+    },
+    {
+      "registration": "ET-AOT",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 177,
+      "scraped_at": "2025-12-12T12:04:18.832748"
+    },
+    {
+      "registration": "ET-AOU",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 213,
+      "scraped_at": "2025-12-12T12:04:31.903627"
+    },
+    {
+      "registration": "ET-AOV",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 201,
+      "scraped_at": "2025-12-12T12:04:43.511010"
+    },
+    {
+      "registration": "ET-ARE",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 192,
+      "scraped_at": "2025-12-12T12:04:56.136196"
+    },
+    {
+      "registration": "ET-ARF",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 215,
+      "scraped_at": "2025-12-12T12:05:07.269906"
+    },
+    {
+      "registration": "ET-ASG",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 145,
+      "scraped_at": "2025-12-12T12:05:18.403419"
+    },
+    {
+      "registration": "ET-ASH",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 214,
+      "scraped_at": "2025-12-12T12:05:36.292423"
+    },
+    {
+      "registration": "ET-ASI",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 150,
+      "scraped_at": "2025-12-12T12:05:53.134240"
+    },
+    {
+      "registration": "ET-ATG",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 177,
+      "scraped_at": "2025-12-12T12:06:11.100744"
+    },
+    {
+      "registration": "ET-ATH",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 97,
+      "scraped_at": "2025-12-12T12:06:21.397839"
+    },
+    {
+      "registration": "ET-ATI",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 136,
+      "scraped_at": "2025-12-12T12:06:32.255949"
+    },
+    {
+      "registration": "ET-ATJ",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 149,
+      "scraped_at": "2025-12-12T12:06:44.545333"
+    },
+    {
+      "registration": "ET-ATK",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 190,
+      "scraped_at": "2025-12-12T12:06:56.492844"
+    },
+    {
+      "registration": "ET-ATL",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 500,
+      "scraped_at": "2025-12-12T12:07:11.220323"
+    },
+    {
+      "registration": "ET-BCC",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 2,
+      "scraped_at": "2025-12-12T12:07:20.097331"
+    },
+    {
+      "registration": "ET-AUO",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 192,
+      "scraped_at": "2025-12-12T12:07:31.457554"
+    },
+    {
+      "registration": "ET-AUP",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 131,
+      "scraped_at": "2025-12-12T12:07:43.827983"
+    },
+    {
+      "registration": "ET-AUQ",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 135,
+      "scraped_at": "2025-12-12T12:07:55.422399"
+    },
+    {
+      "registration": "ET-AUR",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 140,
+      "scraped_at": "2025-12-12T12:08:06.586500"
+    },
+    {
+      "registration": "ET-AXK",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 127,
+      "scraped_at": "2025-12-12T12:08:18.691227"
+    },
+    {
+      "registration": "ET-AXL",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 115,
+      "scraped_at": "2025-12-12T12:08:29.345082"
+    },
+    {
+      "registration": "ET-AXS",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 141,
+      "scraped_at": "2025-12-12T12:08:44.465465"
+    },
+    {
+      "registration": "ET-AXT",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 73,
+      "scraped_at": "2025-12-12T12:08:54.236984"
+    },
+    {
+      "registration": "ET-AYC",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 105,
+      "scraped_at": "2025-12-12T12:09:05.222756"
+    },
+    {
+      "registration": "ET-AYD",
+      "oem_model": "787",
+      "fleet": "Boeing 787 Fleet",
+      "defects_count": 61,
+      "scraped_at": "2025-12-12T12:09:14.948102"
+    },
+    {
+      "registration": "9J-ZAW",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 100,
+      "scraped_at": "2025-12-12T12:09:28.045920"
+    },
+    {
+      "registration": "ET-ANI",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 38,
+      "scraped_at": "2025-12-12T12:09:41.019616"
+    },
+    {
+      "registration": "ET-ANJ",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 149,
+      "scraped_at": "2025-12-12T12:09:53.181434"
+    },
+    {
+      "registration": "ET-ANK",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 123,
+      "scraped_at": "2025-12-12T12:10:05.735541"
+    },
+    {
+      "registration": "ET-ANL",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 34,
+      "scraped_at": "2025-12-12T12:10:17.915385"
+    },
+    {
+      "registration": "ET-ANV",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 55,
+      "scraped_at": "2025-12-12T12:10:31.567219"
+    },
+    {
+      "registration": "ET-ANX",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 61,
+      "scraped_at": "2025-12-12T12:10:42.823586"
+    },
+    {
+      "registration": "ET-AQB",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 94,
+      "scraped_at": "2025-12-12T12:10:54.032926"
+    },
+    {
+      "registration": "ET-AQD",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 34,
+      "scraped_at": "2025-12-12T12:11:06.404387"
+    },
+    {
+      "registration": "ET-AQE",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 59,
+      "scraped_at": "2025-12-12T12:11:18.519982"
+    },
+    {
+      "registration": "ET-AQF",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 50,
+      "scraped_at": "2025-12-12T12:11:31.493689"
+    },
+    {
+      "registration": "ET-ARL",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 68,
+      "scraped_at": "2025-12-12T12:11:48.622177"
+    },
+    {
+      "registration": "ET-ARM",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 28,
+      "scraped_at": "2025-12-12T12:12:00.966756"
+    },
+    {
+      "registration": "ET-ARN",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 118,
+      "scraped_at": "2025-12-12T12:12:15.734035"
+    },
+    {
+      "registration": "ET-ASA",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 27,
+      "scraped_at": "2025-12-12T12:12:27.682645"
+    },
+    {
+      "registration": "ET-AUD",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 45,
+      "scraped_at": "2025-12-12T12:12:40.774550"
+    },
+    {
+      "registration": "ET-AUE",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 62,
+      "scraped_at": "2025-12-12T12:12:53.690753"
+    },
+    {
+      "registration": "ET-AVA",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 32,
+      "scraped_at": "2025-12-12T12:13:05.126196"
+    },
+    {
+      "registration": "ET-AVH",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 33,
+      "scraped_at": "2025-12-12T12:13:17.308596"
+    },
+    {
+      "registration": "ET-AVR",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 41,
+      "scraped_at": "2025-12-12T12:13:28.591691"
+    },
+    {
+      "registration": "ET-AXE",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 17,
+      "scraped_at": "2025-12-12T12:13:39.895442"
+    },
+    {
+      "registration": "ET-AXF",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 28,
+      "scraped_at": "2025-12-12T12:13:52.817431"
+    },
+    {
+      "registration": "ET-AXP",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 22,
+      "scraped_at": "2025-12-12T12:14:04.074735"
+    },
+    {
+      "registration": "ET-AXW",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 44,
+      "scraped_at": "2025-12-12T12:14:14.361422"
+    },
+    {
+      "registration": "ET-AXX",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 12,
+      "scraped_at": "2025-12-12T12:14:24.233804"
+    },
+    {
+      "registration": "ET-AXY",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 24,
+      "scraped_at": "2025-12-12T12:14:35.047410"
+    },
+    {
+      "registration": "ET-AXZ",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 16,
+      "scraped_at": "2025-12-12T12:14:45.578280"
+    },
+    {
+      "registration": "ET-AYF",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 9,
+      "scraped_at": "2025-12-12T12:14:56.063572"
+    },
+    {
+      "registration": "ET-AYG",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 26,
+      "scraped_at": "2025-12-12T12:15:06.535685"
+    },
+    {
+      "registration": "ET-AYH",
+      "oem_model": "Q400",
+      "fleet": "Bombardier Q400 Fleet",
+      "defects_count": 11,
+      "scraped_at": "2025-12-12T12:15:16.860009"
+    }
+  ]
+}
