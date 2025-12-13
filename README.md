@@ -1,411 +1,89 @@
-```markdown
 # Ethiopian Airlines Deferred Defects Tracking System (DefTrack)
 
-![GitHub Stars](https://img.shields.io/github/stars/ethiopian-airlines/defects-system?style=flat-square)
-![GitHub Forks](https://img.shields.io/github/forks/ethiopian-airlines/defects-system?style=flat-square)
-![GitHub Issues](https://img.shields.io/github/issues/ethiopian-airlines/defects-system?style=flat-square)
 ![PHP Version](https://img.shields.io/badge/PHP-8.2+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-
-## 🚀 Overview
-
-**DefTrack** is a comprehensive **Acceptable Deferred Defects Tracking System** designed specifically for Ethiopian Airlines' fleet management needs. This PHP-based application helps maintenance teams efficiently track, manage, and monitor deferred defects across all aircraft types (Boeing 737, 767, 777, 787, Airbus A350, and Bombardier Q400).
-
-### Key Features:
-✅ **Fleet-wide defect tracking** - Manage defects across all aircraft types
-✅ **Comprehensive reporting** - Detailed statistics and analytics
-✅ **Automated data import** - Scrape and process defects from Maintenix
-✅ **Role-based access** - Admin, technician, and fleet-specific permissions
-✅ **Defect categorization** - MEL, TLI, CDL, and NEFMEL classifications
-✅ **Deferral reasons** - PART, TOOL, and TIME deferral logic
-✅ **Defect clearance workflow** - Complete defect resolution process
-✅ **Export capabilities** - Generate CSV reports for analysis
-✅ **Real-time statistics** - Live defect monitoring dashboard
-
-## ✨ Why DefTrack?
-
-DefTrack solves critical challenges in aircraft maintenance by:
-- **Centralizing defect data** from multiple aircraft types
-- **Automating data collection** from Maintenix systems
-- **Providing clear deferral justification** with MEL/TLI references
-- **Enabling efficient defect resolution** with proper documentation
-- **Offering comprehensive reporting** for fleet managers and regulators
-
-This system is particularly valuable for Ethiopian Airlines' diverse fleet, helping ensure compliance with maintenance regulations while optimizing operational efficiency.
-
-## 🛠️ Tech Stack
-
-**Primary Language:** PHP 8.2+
-**Database:** MySQL/MariaDB
-**Frontend:** Bootstrap 5, Font Awesome
-**Backend:** Custom PHP application
-**Scraping:** Python (Selenium, BeautifulSoup)
-**Dependencies:**
-- PDO for database connectivity
-- DateTime for date handling
-- JSON for data processing
-
-## 📦 Installation
-
-### Prerequisites
-
-Before installing DefTrack, ensure you have:
-
-1. **PHP 8.2+** installed on your server
-2. **MySQL/MariaDB** database server
-3. **Composer** for dependency management
-4. **Python 3.8+** (for the scraping scripts)
-5. **ChromeDriver** (for Selenium scraping)
-6. **Web server** (Apache/Nginx recommended)
-
-### Quick Start
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/ethiopian-airlines/defects-system.git
-   cd defects-system
-   ```
-
-2. **Set up the database:**
-   ```bash
-   # Create the database
-   mysql -u root -p -e "CREATE DATABASE et_deferred_defects;"
-   ```
-
-3. **Configure database connection:**
-   Edit `db_connect.php` with your database credentials:
-   ```php
-   $host     = 'your_host';
-   $dbname   = 'et_deferred_defects';
-   $username = 'your_db_user';
-   $password = 'your_db_password';
-   ```
-
-4. **Install dependencies:**
-   ```bash
-   composer install
-   ```
-
-5. **Set up the Python scraper:**
-   ```bash
-   cd scripts
-   pip install -r requirements.txt
-   ```
-
-6. **Configure credentials:**
-   Edit `config.json` in the `scripts/bs_scraper/` directory with your Maintenix credentials
-
-7. **Set up user accounts:**
-   Create users in the database with appropriate roles (admin, technician, etc.)
-
-8. **Run the application:**
-   Access the system through your web server at the project root
-
-## 🎯 Usage
-
-### Basic Workflow
-
-1. **Login** to the system with your credentials
-2. **View defects** by fleet or aircraft registration
-3. **Add new defects** using the defect entry form
-4. **Monitor defect status** with real-time statistics
-5. **Clear defects** when maintenance is completed
-6. **Export reports** for analysis and compliance
-
-### Adding a New Defect
-
-```php
-// Example of defect data structure in the database
-$defect_data = [
-    'fleet' => 'Boeing 737',
-    'ac_registration' => 'ET-ABC',
-    'ata_seq' => '23-15',
-    'defect_desc' => 'Engine oil pressure low',
-    'deferred_by_name' => 'John Doe',
-    'id_signature' => 'JD',
-    'deferral_date' => '2023-11-15',
-    'due_date' => '2023-12-15',
-    'reason' => 'PART',
-    'rid' => 'RSV050012345',
-    'part_no' => 'ENG-12345',
-    'part_qty' => 1,
-    'status' => 'ACTIVE'
-];
-```
-
-### Clearing a Defect
-
-```php
-// Example of clearing a defect through the system
-$defect_id = 123;
-$logbook_no = 'MNT-2023-11-15-001';
-
-// This would be processed through the clear_defect.php script
-// which updates the database record and sets status to 'CLEARED'
-```
-
-### Exporting Defect Data
-
-```php
-// Example of exporting defect data to CSV
-// This is handled automatically through export_defects.php
-// but you can see the structure of the exported data here:
-
-// CSV Header
-fputcsv($output, [
-    'Fleet',
-    'A/C Registration',
-    'Status',
-    'Source',
-    'MEL Category',
-    'ATA',
-    'Due Date',
-    'Reason',
-    'TSFN',
-    'RID',
-    'Defect Description',
-    'Deferred By',
-    'Deferral Date'
-]);
-
-// Sample data row
-fputcsv($output, [
-    'Boeing 737',
-    'ET-ABC',
-    'ACTIVE',
-    'MEL',
-    'C',
-    '23-15',
-    '2023-12-15',
-    'PART',
-    'TSFN80012345',
-    'RSV050012345',
-    'Engine oil pressure low',
-    'John Doe',
-    '2023-11-15'
-]);
-```
-
-## 📁 Project Structure
-
-```
-ethiopian-airlines-defects-system/
-├── assets/
-│   ├── css/                  # CSS stylesheets
-│   │   ├── dashboard.css     # Dashboard styles
-│   │   ├── login.css         # Login page styles
-│   │   └── view_defects.css # Defect view styles
-│   └── img/                  # Image assets
-├── cache/                    # Cached data files
-├── scripts/                  # Python scraping scripts
-│   ├── bs_scraper/           # BeautifulSoup scraping module
-│   │   ├── __init__.py
-│   │   ├── CONFIG.json
-│   │   ├── quick.log
-│   │   ├── run.log
-│   │   ├── run_verbose.log
-│   │   └── scrape_defects.py
-│   └── data_processor.py     # Data processing utility
-├── scripts/data/             # Scraped defect data
-│   ├── defects_latest_*.json # Individual aircraft defect files
-│   └── defects_latest.json   # Combined latest defects
-├── cache/                    # System cache
-├── requirements.txt          # Python dependencies
-├── config.json               # Maintenix configuration
-└── (PHP application files)   # All PHP scripts
-    ├── auth.php              # Authentication handler
-    ├── add_defect.php        # Add new defect form
-    ├── add_defect_soap.php   # Bulk defect import
-    ├── clear_defect.php      # Clear defect form
-    ├── dashboard.php         # Main dashboard
-    ├── db_connect.php        # Database connection
-    ├── edit_defect.php       # Edit existing defect
-    ├── export_defects.php    # Export defects to CSV
-    ├── index.php             # Login page
-    ├── live_statics.php      # Live statistics generator
-    ├── login_process.php     # Login processing
-    ├── logout.php            # Logout handler
-    ├── view_all_defects.php # View all defects
-    └── style.css             # Global styles
-```
-
-## 🔧 Configuration
-
-### Database Configuration
-
-Edit `db_connect.php` with your database credentials:
-```php
-$host     = 'your_host';
-$dbname   = 'et_deferred_defects';
-$username = 'your_db_user';
-$password = 'your_db_password';
-```
-
-### Maintenix Scraper Configuration
-
-Edit `scripts/bs_scraper/CONFIG.json` with your Maintenix credentials:
-```json
-{
-  "login_url": "http://your-maintenix-server/maintenix/common/security/login.jsp",
-  "credentials": {
-    "username": "your_username",
-    "password": "your_password"
-  },
-  "fleets": {
-    // Fleet configuration for all aircraft types
-  }
-}
-```
-
-### User Roles
-
-The system supports three main roles:
-1. **Admin**: Full access to all fleets and functions
-2. **Technician**: Access to specific fleets based on configuration
-3. **Fleet Manager**: View-only access to specific fleets
-
-User roles are configured in the database during setup.
-
-## 🤝 Contributing
-
-We welcome contributions from the aviation maintenance community! Here's how you can help:
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-3. Install dependencies:
-   ```bash
-   composer install
-   pip install -r requirements.txt
-   ```
-4. Make your changes
-5. Test thoroughly
-6. Submit a pull request
-
-### Code Style Guidelines
-
-1. Follow **PSR-12** coding standards
-2. Use **consistent indentation** (4 spaces)
-3. Write **clear, descriptive comments**
-4. Include **type hints** where appropriate
-5. Follow the existing **naming conventions**
-
-### Pull Request Process
-
-1. Ensure your code passes all tests
-2. Update documentation if applicable
-3. Create a comprehensive pull request description
-4. Reference any related issues
-5. Be responsive to feedback
-
-## 📝 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors & Contributors
-
-**Maintainers:**
-- [@ethiopian-airlines-maintenance](https://github.com/ethiopian-airlines-maintenance)
-- [@aviation-tech-team](https://github.com/aviation-tech-team)
-
-**Special Thanks:**
-- Ethiopian Airlines Maintenance Department
-- Boeing and Airbus Technical Support Teams
-- Open-source community for inspiration and tools
-
-## 🐛 Issues & Support
-
-### Reporting Issues
-
-If you encounter problems or have feature requests:
-
-1. Search existing issues first
-2. Create a new issue with:
-   - Clear description of the problem
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Any relevant screenshots or logs
-   - Your environment details
-
-### Getting Help
-
-For general questions or support:
-- Open an issue in this repository
-- Join our [Ethiopian Airlines Maintenance Forum](https://forum.ethiopianairlines.com)
-- Contact our support team at: maintenance-support@ethiopianairlines.com
-
-### FAQ
-
-**Q: Can I use this system for other airlines?**
-A: While the system was developed for Ethiopian Airlines, the core functionality can be adapted for other airlines. The fleet-specific data would need to be reconfigured.
-
-**Q: How often should I run the scraper?**
-A: The scraper should be run daily to ensure you have the most up-to-date defect information. Schedule it to run overnight when system usage is minimal.
-
-**Q: What browsers are supported?**
-A: The system is designed for Chrome and Firefox. For the best experience, we recommend using the latest stable versions.
-
-**Q: Can I customize the UI?**
-A: Yes! The CSS files are well-commented and organized. You can easily modify colors, layouts, and other visual elements to match your airline's branding.
-
-## 🗺️ Roadmap
-
-### Planned Features
-
-1. **Enhanced Reporting:**
-   - Custom report generation with filters
-   - Export to PDF in addition to CSV
-   - Scheduled report delivery
-
-2. **Mobile Optimization:**
-   - Responsive design improvements
-   - Mobile app version
-
-3. **Advanced Analytics:**
-   - Predictive maintenance alerts
-   - Defect trend analysis
-   - Fleet health dashboards
-
-4. **Integration:**
-   - Direct integration with ERP systems
-   - API for third-party applications
-   - Mobile device connectivity
-
-5. **Security Enhancements:**
-   - Two-factor authentication
-   - Audit logging
-   - Role-based access control refinement
-
-### Known Issues
-
-1. **Scraper Stability:** Some complex aircraft configurations may require additional handling
-2. **Date Parsing:** Various date formats in defect data need consistent processing
-3. **Performance:** Large fleets may require database optimization for faster queries
-
-### Future Improvements
-
-1. **Machine Learning:** Predictive defect analysis based on historical data
-2. **Automated Work Orders:** Direct generation of maintenance work orders
-3. **Regulatory Compliance:** Built-in compliance checks for various aviation authorities
-4. **Multi-Language Support:** Interface translations for international operations
-5. **Cloud Deployment:** Containerized deployment options
-
-## 🚀 Getting Started
-
-Ready to implement DefTrack for your fleet management needs?
-
-1. **Fork the repository** and customize it for your specific requirements
-2. **Set up your development environment** as described above
-3. **Configure the system** with your fleet data and credentials
-4. **Train your staff** on using the system
-5. **Start tracking defects** and improving your maintenance operations!
-
-Join us in making aircraft maintenance more efficient, transparent, and compliant with DefTrack!
-
-🔗 [View on GitHub](https://github.com/ethiopian-airlines/defects-system)
-📧 Contact: maintenance-support@ethiopianairlines.com
-```
+![License](https://img.shields.io/badge/license-Proprietary-red.svg)
+
+---
+
+## Overview
+
+**DefTrack** is a proprietary **Acceptable Deferred Defects Tracking System** developed to support aircraft maintenance and operational oversight for Ethiopian Airlines. The system is designed to centralize, structure, and present deferred defect information across multiple aircraft types in a controlled and auditable manner.
+
+This repository contains confidential and proprietary materials intended solely for authorized evaluation, governance, or internal reference.
+
+---
+
+## Restricted Software Notice
+
+⚠️ **IMPORTANT – RESTRICTED USE**
+
+This software is **proprietary and confidential**. No license is granted, whether express or implied.
+
+You are **not permitted** to:
+
+* Use the software for any purpose
+* Copy, modify, adapt, or create derivative works
+* Deploy, host, or execute the system
+* Distribute, publish, sublicense, or transfer any portion of the software
+* Reverse engineer or analyze the implementation
+
+Any use requires **prior written authorization** from the copyright holder.
+
+Refer to the `LICENSE` file for full legal terms, penalties, and enforcement provisions.
+
+---
+
+## System Description (High-Level)
+
+At a conceptual level, DefTrack is designed to:
+
+* Aggregate deferred defect records across multiple aircraft fleets
+* Present defect status and categorization for operational visibility
+* Support regulatory compliance and internal reporting requirements
+* Provide structured access control aligned with maintenance roles
+
+All technical and operational details remain restricted.
+
+---
+
+## Intended Audience
+
+This repository is intended **only** for:
+
+* Authorized stakeholders
+* Internal reviewers
+* Legal, audit, or governance reference
+
+It is **not** intended for public use, community contribution, or third‑party deployment.
+
+---
+
+## Ownership
+
+© 2025 **Natnael Bizuneh Zenebe**
+All rights reserved.
+
+The software, documentation, structure, and all related materials are the exclusive intellectual property of the author and are protected under Ethiopian and international copyright laws.
+
+---
+
+## Licensing
+
+This project is released under a **Proprietary Restricted License**.
+
+No rights are granted to use, copy, modify, or distribute this software.
+See the `LICENSE` file for complete and binding legal terms.
+
+---
+
+## Authorization and Contact
+
+For licensing inquiries, authorization requests, or formal permissions, contact the copyright holder directly.
+
+Unauthorized use may result in civil and/or criminal liability under applicable law.
+
+---
+
+## Legal Disclaimer
+
+This repository does not constitute an offer, invitation, or permission to use the software. Presence on GitHub does not waive or limit any intellectual property rights.
