@@ -50,41 +50,46 @@
     flex-wrap: wrap; /* Only wraps on very small screens */
 }
 
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;              /* spacing between buttons */
+    white-space: nowrap;   /* prevents line break */
+}
+
 .action-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 10px;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-decoration: none;
-    color: white !important;
-    min-width: 85px;
-    height: 42px;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
 }
 
+/* Clear button */
 .clear-btn {
     background: #27ae60;
+    color: #fff;
 }
 
 .clear-btn:hover {
-    background: #219a52;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(39,174,96,0.4);
+    background: #219150;
 }
 
+/* Edit button */
 .edit-btn {
     background: #3498db;
+    color: #fff;
 }
 
 .edit-btn:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(52,152,219,0.4);
+    background: #2c80b4;
 }
+
 
 /* Optional: Add icons for extra polish */
 .clear-btn::before {

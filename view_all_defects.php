@@ -89,7 +89,7 @@ usort($all_defects, fn($a,$b) => [$a['fleet'], $b['id']] <=> [$b['fleet'], $a['i
     </div>
 </nav>
 
-<div class="container-fluid" style="padding-left:120px; padding-right:120px; max-width:100%;">
+<div class="container-fluid" style="padding-left:50px; padding-right:50px; max-width:100%;">
 
     <!-- Messages -->
     <?php if (isset($_SESSION['success'])): ?>
