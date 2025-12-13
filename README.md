@@ -1,4 +1,4 @@
-# Ethiopian Airlines Deferred Defects Tracking System (DefTrack)
+# Airlines Deferred Defects Tracking System (DefTrack)
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.2+-blue.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-red.svg)
@@ -7,7 +7,7 @@
 
 ## Overview
 
-**DefTrack** is a proprietary **Acceptable Deferred Defects Tracking System** developed to support aircraft maintenance and operational oversight for Ethiopian Airlines. The system is designed to centralize, structure, and present deferred defect information across multiple aircraft types in a controlled and auditable manner.
+**DefTrack** is a proprietary **Acceptable Deferred Defects Tracking System** developed to support aircraft maintenance and operational oversight for Airlines. The system is designed to centralize, structure, and present deferred defect information across multiple aircraft types in a controlled and auditable manner.
 
 This repository contains confidential and proprietary materials intended solely for authorized evaluation, governance, or internal reference.
 
@@ -87,3 +87,4 @@ Unauthorized use may result in civil and/or criminal liability under applicable 
 ## Legal Disclaimer
 
 This repository does not constitute an offer, invitation, or permission to use the software. Presence on GitHub does not waive or limit any intellectual property rights.
+
